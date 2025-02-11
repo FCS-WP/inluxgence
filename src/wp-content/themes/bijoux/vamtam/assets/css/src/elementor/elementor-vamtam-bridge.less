@@ -1,0 +1,2468 @@
+/*
+	Elementor-specific rules and overrides.
+*/
+@import '../mixins.less';
+
+.elementor-container {
+	form.elementor-form {
+		input[type], select {
+			margin-bottom: 0;
+		}
+
+		.elementor-field-textual{
+			&.elementor-size-md {
+				padding: 6px 16px;
+			}
+
+			&.elementor-size-sm {
+				padding: 5px 14px;
+			}
+
+			&.elementor-size-xs {
+				padding: 3px 12px;
+			}
+		}
+
+		.elementor-field-option {
+			input[type="radio"] {
+				vertical-align: middle;
+			}
+			label {
+				padding-left: 10px;
+			}
+		}
+	}
+}
+
+// WC products override.
+.cross-sells,
+.elementor-wc-products {
+	.products.vamtam-wc .product {
+		.woocommerce-product-details__short-description,
+		.woocommerce-loop-product__title {
+			margin: 0;
+		}
+
+	}
+}
+
+// Bijoux-after.
+// WC Products
+.elementor-active {
+	.woocommerce,
+	&.woocommerce {
+		:not(.vamtam-limited-layout)& .products .product:not(.product-category) {
+			.vamtam-product-content {
+				flex: 0;
+				background-color: transparent;
+				padding: 0;
+				padding-top: 20px;
+				margin: 0;
+				height: auto;
+				> a {
+					order: 1;
+					grid-area: 1 / 1 / 2 / 5;
+				}
+
+				&, > a {
+					display: grid;
+					grid-template-columns: repeat(4, 1fr);
+					grid-template-rows: repeat(2, min-content);
+
+					.woocommerce-loop-product__title {
+						order: 1;
+						grid-area: 1 / 1 / 2 / 4;
+					}
+					.price {
+						grid-area: 1 / 4 / 2 / 5;
+						order: 2;
+					}
+					.vamtam-product-tags {
+						order: 2;
+						grid-area: 2 / 1 / 3 / 4;
+					}
+				}
+			}
+
+			&:hover {
+				&, > *, > a img:not([class*="elementor-animation"]), .vamtam-product-content, .vamtam-product-content > * {
+					transform: none;
+				}
+
+				> a img:not([class*="elementor-animation"]) {
+					transform: scale(.9);
+				}
+			}
+
+			.vamtam-product-tags {
+				font-family: var(--vamtam-primary-font-font-family);
+				font-size: 14px;
+				font-weight: 300;
+				letter-spacing: 0;
+				line-height: 20px;
+				color: #2E3031;
+
+				.separator {
+					font-size: 11px;
+				}
+			}
+
+			.woocommerce-loop-product__link {
+				height: auto;
+				flex: none;
+				overflow: unset;
+			}
+
+			.woocommerce-loop-product__title,
+			.price {
+				color: var(--vamtam-accent-color-3);
+				padding: 0;
+				margin-bottom: 10px;
+			}
+
+			.price {
+				text-align: end;
+				position: static;
+				padding: 0;
+				margin: 0;
+			}
+		}
+	}
+	&.single-product .main-container	{
+		border-top: none;
+	}
+}
+
+.elementor-element.elementor-products-grid ul.products li.product {
+	width: auto !important;
+	margin: 0 !important;
+	float: none !important;
+}
+
+// Elementor post meta widget vertical alignment fix (inline).
+.elementor-inline-items.elementor-icon-list-items.elementor-post-info > li.elementor-inline-item {
+	align-items: center;
+}
+
+.elementor-pagination {
+	margin-top: 50px;
+	border-top: 3px solid var(--vamtam-accent-color-7);
+	padding-top: 30px;
+}
+
+.woocommerce div.product.elementor .elementor-product-booking form.cart:not(.grouped_form):not(.variations_form) {
+	flex-flow: column;
+}
+
+.elementor-price-list-price {
+	font-weight: 600;
+}
+
+.elementor-icon-list-items.elementor-inline-items .elementor-icon-list-item {
+	padding-bottom: 10px;
+}
+
+.elementor-field-subgroup:not(.elementor-subgroup-inline) .elementor-field-option {
+	margin-bottom: 5px;
+}
+
+
+.elementor-select-wrapper {
+	&:before {
+		z-index: 1;
+		color: currentColor;
+	}
+
+	&.woocommerce-input-wrapper:before {
+		inset-inline-end: 30px;
+	}
+}
+
+body[class*="elementor-"] {
+	.select2.select2-container .select2-selection[role="combobox"] {
+		line-height: normal;
+		// Bijoux-only.
+		display: flex;
+		align-items: center;
+		padding: 14px 20px;
+
+		.select2-selection__arrow {
+			display: none;
+		}
+
+		.select2-selection__rendered {
+			line-height: inherit;
+			padding: 0px;
+		}
+	}
+
+	:not([class*="elementor-select-wrapper"]) > .select2.select2-container .select2-selection[role="combobox"] {
+		&:before {
+			content: "\e92a";
+			font-family: eicons;
+			font-size: 15px;
+			position: absolute;
+			top: 50%;
+			transform: translateY(-50%);
+			right: 30px;
+			pointer-events: none;
+		}
+	}
+}
+
+// Theme Icons.
+[class^="vamtam-theme-"], [class*=" vamtam-theme-"] {
+	/* use !important to prevent issues with browser extensions that change fonts */
+	font-family: "theme-icons" !important;
+	speak: none;
+	font-style: normal;
+	font-weight: normal;
+	font-variant: normal;
+	text-transform: none;
+	line-height: 1;
+
+	/* Better Font Rendering =========== */
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+// Elementor Lightbox.
+.dialog-lightbox-widget.dialog-type-buttons.elementor-lightbox {
+	// Fix for slideshow controls.
+	:is(.swiper-container, .swiper) * {
+		box-sizing: border-box;
+	}
+}
+
+#elementor-lightbox.dialog-type-lightbox {
+	z-index: 99999;
+}
+
+@keyframes vamtam-grow-left {
+    from { clip-path: inset(0 100% 0 0); }
+  	to { clip-path: inset(0); }
+}
+@keyframes vamtam-grow-right {
+    from { clip-path: inset(0 0 0 100%); }
+  	to { clip-path: inset(0); }
+}
+@keyframes vamtam-grow-top {
+    from { clip-path: inset(100% 0 0 0); }
+  	to { clip-path: inset(0); }
+}
+@keyframes vamtam-grow-bottom {
+    from { clip-path: inset(0 0 100% 0); }
+  	to { clip-path: inset(0); }
+}
+
+.growFromLeft {
+	&:not(.elementor-widget-image ) {
+		animation-name: vamtam-grow-left;
+		will-change: clip-path;
+	}
+}
+
+.growFromRight {
+	&:not(.elementor-widget-image ) {
+		animation-name: vamtam-grow-right;
+		will-change: clip-path;
+	}
+}
+
+.growFromLeftScroll {
+	@val: calc(100% - var(--vamtam-scroll-ratio));
+	&:not(.elementor-widget-image) {
+		clip-path:inset(0 @val 0 0);
+		transition: clip-path .1s linear;
+		will-change: clip-path;
+	}
+}
+.growFromRightScroll {
+	@val: calc(100% - var(--vamtam-scroll-ratio));
+	&:not(.elementor-widget-image) {
+		clip-path:inset(0 0 0 @val);
+		transition: clip-path .1s linear;
+		will-change: clip-path;
+	}
+}
+
+.growFromLeftScroll,
+.growFromRightScroll {
+	&.animated-fast {
+		transition-duration: .1s;
+	}
+	&.animated-slow {
+		transition-duration: .1s;
+	}
+}
+
+@keyframes vamtam-scale-out {
+    from { transform: scale(1.4); }
+  	to { transform: scale(1);}
+}
+
+// Bijoux-only.
+@keyframes vamtam-line-prefix-grow {
+	from { transform: scaleX(0); }
+	to { transform: scaleX(1);}
+}
+
+// Bijoux only.
+.bijoux-elementor-btn-line-prefix() {
+	.elementor-button, button {
+		.elementor-button-text {
+			flex-grow: unset;
+		}
+		.bijoux-vamtam-prefix();
+	}
+}
+
+// Bijoux-only.
+input[type="number"] {
+	appearance: textfield !important;
+}
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+	-webkit-appearance: none !important;
+}
+.vamtam-count-wrap {
+	display: flex;
+	position: relative;
+	height: 100%;
+
+	span {
+		position: absolute;
+		content: '';
+		top: calc(50% - .5em);
+		z-index: 1;
+		width: 1em;
+		height: 1em;
+		font-size: 24px;
+		line-height: normal;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		user-select: none;
+
+		&.vamtam-increment {
+			right: 10px;
+		}
+		&.vamtam-decrement {
+			left: 10px;
+		}
+	}
+}
+
+.vamtam-popup-toggle {
+	&, &-clone {
+		i, svg {
+			transition: all .3s ease;
+		}
+	}
+	&-clone {
+		z-index: 99999;
+		position: fixed;
+		&, * {
+			background: transparent !important;
+			padding: 0 !important;
+			margin: 0 !important;
+		}
+		a {
+			pointer-events: none !important;
+		}
+		&, li {
+			list-style: none;
+		}
+		opacity: 0;
+		pointer-events: none;
+		&.is-active {
+			opacity: 1;
+			&.is-clickable {
+				pointer-events: all;
+			}
+			i {
+				transition: all .3s ease !important;
+			}
+			&:hover i {
+				color: var(--vamtam-accent-color-1) !important;
+			}
+		}
+		// Use vamtam close Icon.
+		&.vamtam-popup-close-icon {
+			i {
+				&::before {
+					font-family: 'vamtam-theme' !important;
+					content: icon('vamtam-theme-close-sample') !important;
+				}
+			}
+		}
+		&.vamtam-popup-close-dark {
+			i, svg {
+				color: var(--vamtam-accent-color-6) !important;
+				fill: var(--vamtam-accent-color-6) !important;
+				stroke: var(--vamtam-accent-color-6) !important;
+			}
+			&.is-active {
+				&:hover {
+					i, svg {
+						color: var(--vamtam-accent-color-6) !important;
+						fill: var(--vamtam-accent-color-6) !important;
+						stroke: var(--vamtam-accent-color-6) !important;
+					}
+				}
+			}
+		}
+		&.hidden {
+			z-index: -99999;
+			pointer-events: none;
+			transition: none !important;
+			opacity: 0 !important;
+		}
+	}
+}
+// Bijoux-only.
+.vamtam-popup-toggle {
+	@keyframes vamtam-fade-out {
+		0% {
+			opacity: 1;
+		}
+		100% {
+			opacity: 0;
+		}
+	}
+	@keyframes vamtam-fade-in {
+		0% {
+			opacity: 0;
+		}
+		100% {
+			opacity: 1;
+		}
+	}
+	// Clone
+	&.vamtam-popup-toggle-clone {
+		// Active state
+		&.is-active {
+			opacity: 1;
+			animation: vamtam-fade-in 1s forwards linear !important;
+		}
+		// Closed state
+		&:not(.is-active) {
+			opacity: 1;
+			animation: vamtam-fade-out .3s forwards linear !important;
+		}
+	}
+}
+
+.elementor-field-textual {
+	border-radius: 0;
+}
+
+.elementor-field-group .elementor-field-textual:focus {
+	box-shadow: none;
+}
+
+// Bijoux-only.
+.elementor-lightbox .elementor-lightbox-image,
+.elementor-lightbox .elementor-video-container {
+	box-shadow: none;
+	border-radius: 0;
+}
+
+// Bijoux-only.
+.elementor-field-group .elementor-field-textual {
+	border: 1px solid var(--vamtam-accent-color-4);
+    background-color: #fff;
+}
+
+// Bijoux-only.
+.rotate-270 {
+	transform: rotate(270deg);
+}
+
+// Fix for "Upgrade Swiper Library" experiment.
+.swiper-container {
+    margin-left: auto;
+    margin-right: auto;
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+}
+.elementor-swiper-button {
+	cursor: pointer;
+	position: absolute;
+	display: inline-flex;
+	z-index: 1;
+	top: 50%;
+	transform: translateY(-50%);
+
+	&-prev {
+		left: 10px;
+	}
+	&-next {
+		right: 10px;
+	}
+}
+
+// Fix for blink-based browsers so the scrollbar is not included in the calculation (like in max-width:100%).
+body.e--ua-blink .elementor-popup-modal .dialog-widget-content {
+	max-width: 100vw;
+}
+
+// ---------------- Custom Widget Styles -------------- //
+
+.elementor-blockquote footer {
+	align-items: center;
+}
+
+.elementor-blockquote__tweet-button {
+	align-self: center;
+}
+
+// Button
+.elementor-widget-button {
+	&.vamtam-el-btn-flex[data-widget_type="button.default"] {
+		&, .elementor-widget-container, .elementor-button-wrapper, .elementor-button {
+			height: 100%;
+		}
+		.elementor-button {
+			display: flex;
+			justify-content: center;
+			align-items: center;
+		}
+		&.elementor-align-left {
+			.elementor-button {
+				justify-content: flex-start;
+			}
+		}
+		&.elementor-align-center {
+			.elementor-button {
+				justify-content: center;
+			}
+		}
+		&.elementor-align-right {
+			.elementor-button {
+				justify-content: flex-end;
+			}
+		}
+	}
+
+	.elementor-button:hover {
+		cursor: pointer;
+	}
+
+	&.vamtam-has-underline-anim {
+		.elementor-button {
+			position: relative;
+			&::after {
+				content: "";
+				z-index: 1;
+				display: block;
+				position: absolute;
+				bottom: -5px;
+				left: 0;
+				right: 0;
+				height: 5px;
+				background-size: 200% 100%;
+				background-position: right center;
+				transition: all 1s ease;
+				background-image: linear-gradient(to right, var(--vamtam-underline-bg-hover-color ,var(--vamtam-accent-color-1)) 50%, var(--vamtam-underline-bg-color, var(--vamtam-accent-color-2)) 50%);
+			}
+			&:hover {
+				&::after {
+					background-position: left center;
+				}
+			}
+		}
+	}
+
+	// Bijoux-only.
+	&.elementor-button-bijoux {
+		.elementor-button {
+			align-items: flex-start;
+			background-color: transparent;
+			line-height: 1;
+
+			&, .vamtam-content-wrap, .vamtam-text-first-letter, .elementor-button-icon {
+				display: flex;
+				flex-direction: column;
+				justify-content: center;
+			}
+
+			.vamtam-content-wrap,
+			.elementor-button-icon {
+				position: relative;
+				align-items: center;
+			}
+
+			.elementor-button-text,
+			.elementor-button-icon > * {
+				position: relative;
+			}
+
+			.vamtam-text-first-letter {
+				font-size: 16em;
+				font-weight: normal;
+
+				> .vamtam-letter {
+					position: relative;
+					display: inline-block;
+					overflow: hidden;
+					.outer {
+						position: absolute;
+						overflow: hidden;
+						top: 0;
+						left: 0;
+						transition: transform 1s ease;
+						transform: translateY(100%);
+					}
+					.inner {
+						display: inline-block;
+						transition: transform 1s ease;
+						transform: translateY(-100%);
+					}
+				}
+			}
+			&:hover {
+				.vamtam-text-first-letter {
+					> .vamtam-letter {
+						.outer, .inner {
+							transform: none;
+						}
+					}
+				}
+			}
+
+			.elementor-button-content-wrapper {
+				position: absolute;
+				top: 0;
+				right: 0;
+				bottom: 0;
+				left: 0;
+				.elementor-button-text {
+					display: flex;
+					flex-flow: column wrap;
+					justify-content: center;
+					align-items: center;
+				}
+			}
+		}
+
+		&.elementor-align-{
+			&right {
+				.elementor-button-wrapper.has-icon{
+					justify-content: flex-end;
+				}
+				.elementor-button {
+					align-items: flex-end;
+				}
+			}
+			&left {
+				.elementor-button-wrapper.has-icon{
+					justify-content: flex-start;
+				}
+				.elementor-button {
+					align-items: flex-start;
+				}
+			}
+			&center {
+				.elementor-button-wrapper.has-icon{
+					justify-content: center;
+				}
+				.elementor-button {
+					align-items: center;
+				}
+			}
+		}
+
+		.elementor-button-text {
+			line-height: normal;
+		}
+
+		.elementor-button-wrapper.has-icon {
+			display: flex;
+			justify-content: center;
+			align-items: center;
+		}
+
+		&.vamtam-has-icon-stacked {
+			.elementor-button-wrapper.has-icon .elementor-button-content-wrapper {
+				flex-direction: column;
+			}
+		}
+
+		&.vamtam-has-force-wrap {
+			.elementor-button-text {
+				word-spacing: 99999px;
+			}
+		}
+	}
+
+	// Bijoux-only.
+	&.elementor-button-bijoux-alt {
+		.bijoux-elementor-btn-line-prefix();
+	}
+}
+
+// Gallery
+.elementor-widget-gallery {
+	// Safari-only fix for elementor gallery items.
+	.elementor-gallery-item {
+		// Add on element with overflow
+		-webkit-mask-image: -webkit-radial-gradient(white, black);
+	}
+}
+
+// Icon.
+.elementor-widget-icon {
+	// Bijoux-only.
+	&.vamtam-popup-toggle.vamtam-bijoux-overlay {
+		@keyframes vamtam-overlay-menu-top {
+			0% {
+				opacity: 1;
+				transform: rotate(0) scaleX(1) translateX(0);
+				transform-origin: left center;
+			}
+			30% {
+				opacity: 1;
+				transform: rotate(0) scaleX(0) translateX(0);
+			}
+			30.1% {
+				opacity: 0;
+				transform: rotate(0) scaleX(0) translateX(6%);
+			}
+			31% {
+				opacity: 1;
+				transform: rotate(45deg) scaleX(0) translateX(6%);
+			}
+			100%,80% {
+				opacity: 1;
+				transform: rotate(45deg) scaleX(1) translateX(6%);
+				transform-origin: left center;
+			}
+		}
+		@keyframes vamtam-overlay-menu-bottom {
+			0% {
+				opacity: 1;
+				transform: rotate(0) scaleX(1) translateX(0);
+				transform-origin: right center;
+			}
+			50% {
+				opacity: 1;
+				transform: rotate(0) scaleX(0) translateX(0);
+			}
+			50.1% {
+				opacity: 0;
+				y: 0;
+				transform: rotate(0) scaleX(0) translateX(-6%);
+			}
+			51%,55% {
+				opacity: 1;
+				y: 0;
+				transform: rotate(-45deg) scaleX(0) translateX(-6%);
+			}
+			100% {
+				opacity: 1;
+				y: 0;
+				transform: rotate(-45deg) scaleX(1) translateX(-6%);
+				transform-origin: right center;
+			}
+		}
+		@keyframes vamtam-overlay-menu-close-top {
+			0% {
+				opacity: 1;
+				x: 1;
+				transform: rotate(45deg) scaleX(1);
+				transform-origin: left center;
+			}
+			50% {
+				opacity: 1;
+				x: 0;
+				y:50%;
+				transform: rotate(0deg) scaleX(1);
+				transform-origin: center center;
+			}
+			100% {
+				opacity: 1;
+				x: 0;
+				y:0%;
+				transform: rotate(0deg) scaleX(1);
+				transform-origin: center center;
+			}
+		}
+		@keyframes vamtam-overlay-menu-close-bottom {
+			0% {
+				opacity: 1;
+				y: 0;
+				x: -1;
+				transform: rotate(-45deg) scaleX(1);
+				transform-origin: right center;
+			}
+			50% {
+				opacity: 1;
+				y: 50%;
+				x: 0;
+				transform: rotate(0deg) scaleX(1);
+				transform-origin: center center;
+			}
+			100% {
+				opacity: 1;
+				y: 8;
+				x: 0;
+				transform: rotate(0deg) scaleX(1);
+				transform-origin: center center;
+			}
+		}
+		@keyframes vamtam-overlay-menu-hide {
+			0% {
+				opacity: 1;
+			}
+			100% {
+				opacity: 0;
+			}
+		}
+		@keyframes vamtam-overlay-menu-link-up {
+			0% {
+				transform: translateY(0);
+			}
+			100% {
+				transform: translateY(-25%);
+			}
+		}
+		@keyframes vamtam-overlay-menu-link-down {
+			0% {
+				transform: translateY(-25%);
+			}
+			100% {
+				transform: translateY(0);
+			}
+		}
+		&.vamtam-popup-toggle-clone {
+			&.is-active {
+				a.elementor-icon {
+					animation: vamtam-overlay-menu-link-up forwards .9s ease;
+				}
+				svg.overlay-menu {
+					overflow: visible;
+					.top {
+						animation: vamtam-overlay-menu-top forwards .9s ease;
+					}
+					.bottom {
+						animation: vamtam-overlay-menu-bottom forwards .9s ease;
+					}
+				}
+			}
+			&.is-closed {
+				opacity: 1;
+				animation: vamtam-overlay-menu-hide 2s forwards linear;
+				a.elementor-icon {
+					animation: vamtam-overlay-menu-link-down forwards .9s ease;
+				}
+				svg.overlay-menu {
+					overflow: visible;
+					.top {
+						animation: vamtam-overlay-menu-close-top forwards .9s ease;
+					}
+					.bottom {
+						animation: vamtam-overlay-menu-close-bottom forwards .9s ease;
+					}
+				}
+			}
+		}
+		&:not(.vamtam-popup-toggle-clone).clone-active {
+			transition: none !important;
+			opacity: 0 !important;
+		}
+		.elementor-icon {
+			vertical-align: middle;
+		}
+	}
+}
+
+// Icon-Box
+.elementor-widget-icon-box {
+	&.elementor-shape-vamtam-amorph .elementor-icon {
+		// Base64 version of vamtam-amorph-shape.
+		mask: data-uri('image/svg+xml;base64', '../../../assets/images/vamtam-amorph-shape.svg');
+	}
+
+	// Maintain flex for all devices for icon box widget (icon left/right).
+	&.vamtam-el-widget-icon-box-flex {
+		&.elementor-position-left,
+		&.elementor-position-right {
+			.elementor-icon-box-wrapper {
+				display: flex;
+				align-items: center;
+				.elementor-icon-box-icon {
+					display: inline-flex;
+					flex: 0 0 auto;
+				}
+			}
+		}
+
+		&.elementor-position-left {
+			.elementor-icon-box-icon {
+				margin-right: 10px !important;
+			}
+		}
+
+		&.elementor-position-right {
+			.elementor-icon-box-wrapper {
+				flex-direction: row-reverse;
+			}
+			.elementor-icon-box-icon {
+				margin-left: 10px !important;
+			}
+		}
+	}
+
+	// Whole box is link.
+	&.vamtam-has-box-is-link {
+		a.elementor-icon-box-wrapper {
+			display: block;
+
+			.elementor-icon-box-description,
+			.elementor-icon-box-title {
+				transition: all .3s;
+			}
+		}
+	}
+
+	.mega-menu {
+		> a:not([href]) {
+			cursor: pointer;
+		}
+	}
+}
+
+// Icon-List
+.elementor-widget-icon-list {
+	// Bijoux-only.
+	.elementor-icon-list-item {
+		.elementor-icon-list-icon i,
+		.elementor-icon-list-text {
+			transition: all .3s ease;
+		}
+	}
+}
+
+// Image-Box
+.elementor-widget-image-box {
+	&.vamtam-has-bg-mask .elementor-widget-container {
+		// Base64 version of vamtam-imageBox-bg.
+		mask: data-uri('image/svg+xml;base64','../../../assets/images/vamtam-imageBox-bg.svg');
+		mask-repeat: no-repeat;
+		mask-size: cover;
+	}
+	&.vamtam-has-image-mask .elementor-image-box-img img {
+		// Base64 version of vamtam-imageBox-img.svg.
+		mask: data-uri('image/svg+xml;base64','../../../assets/images/vamtam-imageBox-img.svg');
+		mask-repeat: no-repeat;
+		mask-size: cover;
+	}
+	&.vamtam-has-eye {
+		&.vamtam-has-bg-mask .elementor-widget-container {
+			.vamtam-eye {
+				position: absolute;
+				left: 0;
+			}
+		}
+		.vamtam-eye {
+			position: relative;
+			bottom: 12px;
+			width: 100%;
+
+			&, .outer, .inner {
+				display: flex;
+				justify-content: center;
+				align-items: center;
+			}
+			.outer, .inner {
+				// Base64 version of vamtam-imageBox-eye.svg.
+				mask: data-uri('image/svg+xml;base64','../../../assets/images/vamtam-imageBox-eye.svg');
+				mask-repeat: no-repeat;
+				mask-size: cover;
+			}
+			.outer {
+				height: 50px;
+				width: 50px;
+			}
+			.inner {
+				height: 26px;
+				width: 26px;
+			}
+			.eye {
+				position: relative;
+				width: 100%;
+				height: 100%;
+				&, &:after {
+					border-radius: 50%;
+				}
+				&:after {
+					content: ' ';
+					position: absolute;
+					height: 8px;
+					width: 8px;
+					top: 5px;
+				}
+			}
+		}
+	}
+	.elementor-image-box-content {
+		padding-left: 20px;
+		padding-right: 20px;
+	}
+
+	// Whole box is link.
+	&.vamtam-has-box-is-link {
+		a.elementor-image-box-wrapper {
+			display: block;
+
+			.elementor-image-box-description,
+			.elementor-image-box-title {
+				transition: all .3s;
+			}
+		}
+	}
+}
+
+// Image.
+.elementor-widget-image {
+	&[data-settings*="imageGrowWithScale"],
+	.elementor-editor-active &[class*="imageGrowWithScale"] {
+		.vamtam-image-wrapper {
+			display: inline-block;
+			width: 100%;
+			img {
+				width: 100% !important;
+			}
+		}
+	}
+	&.imageGrowWithScaleLeft .vamtam-image-wrapper {
+		will-change: clip-path;
+		animation-name: vamtam-grow-left;
+		animation-timing-function: cubic-bezier(0.4, 0, 0, 0.9);
+	}
+	&.imageGrowWithScaleRight .vamtam-image-wrapper {
+		will-change: clip-path;
+		animation-name: vamtam-grow-right;
+		animation-timing-function: cubic-bezier(0.4, 0, 0, 0.9);
+	}
+	&.imageGrowWithScaleTop .vamtam-image-wrapper {
+		will-change: clip-path;
+		animation-name: vamtam-grow-top;
+		animation-timing-function: cubic-bezier(0.4, 0, 0, 0.9);
+	}
+	&.imageGrowWithScaleBottom .vamtam-image-wrapper {
+		will-change: clip-path;
+		animation-name: vamtam-grow-bottom;
+		animation-timing-function: cubic-bezier(0.4, 0, 0, 0.9);
+	}
+	img.imageGrowWithScaleLeft,
+	img.imageGrowWithScaleRight,
+	img.imageGrowWithScaleTop,
+	img.imageGrowWithScaleBottom {
+		animation-name: vamtam-scale-out;
+		animation-timing-function: cubic-bezier(0.4, 0, 0, 0.9);
+	}
+
+	&.growFromLeftScroll,
+	&.growFromRightScroll {
+		&.animated-fast .elementor-image img {
+			transition-duration: .1s;
+		}
+		&.animated-slow .elementor-image img {
+			transition-duration: .1s;
+		}
+	}
+
+	&.growFromLeftScroll {
+		@val: calc(100% - var(--vamtam-scroll-ratio));
+		.elementor-image img {
+			clip-path:inset(0 @val 0 0);
+			transition: clip-path .1s ease;
+			will-change: clip-path;
+		}
+	}
+	&.growFromRightScroll {
+		@val: calc(100% - var(--vamtam-scroll-ratio));
+		.elementor-image img {
+			clip-path:inset(0 0 0 @val);
+			transition: clip-path .1s ease;
+			will-change: clip-path;
+		}
+	}
+}
+
+// Nav menu
+.elementor-widget-nav-menu {
+
+	html.ios-safari & li {
+		outline: 0 !important;
+	}
+
+	ul.elementor-nav-menu {
+		flex-basis: 100%;
+		z-index: 99;
+		margin: 0;
+
+		li {
+			z-index: 99;
+		}
+	}
+
+	.elementor-nav-menu ul ul a,
+	.elementor-nav-menu--dropdown a	{
+		&,
+		&:active,
+		&:focus,
+		&:hover {
+			border-left: 0 solid transparent;
+		}
+	}
+
+	.elementor-nav-menu--dropdown .elementor-item-active {
+		font-weight: 600;
+	}
+
+	.elementor-nav-menu--main {
+		.current-menu-ancestor {
+			> a.elementor-item:after {
+				width: 100% !important;
+				opacity: 1 !important;
+				left: 0% !important;
+			}
+		}
+
+		.elementor-item.elementor-item-active,
+		.current-menu-ancestor > a {
+			font-weight: 700;
+		}
+
+		> .elementor-nav-menu > .current-menu-ancestor .elementor-item:not(:hover):not(:focus):not(.elementor-item-active):not(.highlighted) {
+			&:before, &:after {
+				opacity: 1;
+			}
+		}
+
+		&:not(.e--pointer-text):not(.e--pointer-none):not(.e--pointer-background) {
+			> .elementor-nav-menu > .current-menu-ancestor .elementor-item:not(:hover):not(:focus):not(.elementor-item-active):not(.highlighted) {
+				&:before, &:after {
+					left: auto;
+				}
+			}
+		}
+
+		// Line through pointer.
+		&.e--pointer-line-through {
+			.elementor-item:after {
+				top: 0;
+				bottom: 0;
+				margin: auto 0;
+				z-index: -1;
+			}
+
+			.elementor-item.elementor-item-active:after,
+			.current-menu-ancestor .elementor-item:after {
+				width: 100% !important;
+			}
+
+			// Horizontal-grow animation.
+			&.e--animation-horizontal-grow .elementor-item {
+				&:after {
+					opacity: 1 !important;
+					transition: background-color .4s ease, width .3s ease-in;
+					width: 0;
+				}
+				&:hover:not(.elementor-item-active):after {
+					width: 100% !important;
+				}
+			}
+		}
+
+		// Prefix pointer.
+		&.e--pointer-prefix {
+			// Theme-dependant values.
+			@prefix-width: 10px;
+			@prefix-active-width: 25px;
+			@prefix-height: 1px;
+
+			.elementor-item:after {
+				bottom: unset;
+				z-index: -1;
+				transform: translateX( calc( -100% - 10px ) );
+				height: @prefix-height;
+				width: @prefix-width !important;
+			}
+
+			.elementor-item.elementor-item-active:after,
+			.current-menu-ancestor .elementor-item:after {
+				width: @prefix-active-width !important;
+			}
+
+			// Prefix-grow animation.
+			&.e--animation-prefix-grow .elementor-item {
+				&:after {
+					opacity: 1 !important;
+					transition: background-color .4s ease, width .4s ease;
+				}
+				&:hover:not(.elementor-item-active):after {
+					width: @prefix-active-width !important;
+				}
+			}
+
+			// Bijoux-only.
+			> ul > li > ul.sub-menu {
+				margin-left: -35px !important;
+
+				.sub-menu {
+					margin-top: 0 !important;
+					margin-left: 0 !important;
+					top: 0 !important;
+					left: 100% !important;
+				}
+			}
+		}
+	}
+
+	// Nav menu dropdown item override.
+	ul.elementor-nav-menu--dropdown a,
+	ul.elementor-nav-menu--dropdown a:focus,
+	ul.elementor-nav-menu--dropdown a:hover {
+		border-left-width: 0;
+	}
+
+	// Pointer bounce anim.
+	.e--animation-bounce {
+		@keyframes nav-menu--pointer-bounce {
+			0%{
+			  opacity: 0;
+			  transform: scale(0) translateY(200%);
+			}
+			30%{
+				opacity: 0.5;
+				transform: scale(0.89) translateY(-35%);
+			}
+			50%{
+			  opacity: 0.9;
+			  transform: scale(1) translateY(-35%);
+			}
+			70%{
+				opacity: 0.9;
+				transform: scale(1.2) translateY(35%);
+			}
+			80%{
+			  opacity: 1;
+			  transform: scale(0.89) translateY(0);
+			}
+			90%{
+				opacity: 1;
+				transform: scale(0.89) translateY(0);
+			}
+			100%{
+			  opacity: 1;
+			  transform: scale(1) translateY(0);
+			}
+		}
+
+		.elementor-item:not(.elementor-item-active):hover:before,
+		.elementor-item:not(.elementor-item-active):focus:before,
+		.elementor-item:not(.elementor-item-active).highlighted:before {
+			animation-name: nav-menu--pointer-bounce;
+			animation-fill-mode: forwards;
+			animation-duration: .5s;
+		}
+	}
+
+	&.vamtam-has-custom-divider {
+		.elementor-nav-menu--dropdown li {
+			display: flex;
+			justify-content: center;
+			align-items: center;
+
+			&:not(:last-child) {
+				border-bottom: none;
+				&:after {
+					content: "";
+					position: absolute;
+					bottom: 0;
+					width: 100%;
+					height: 1px;
+					z-index: 10;
+					background-color: var(--vamtam-accent-color-1);
+				}
+			}
+		}
+	}
+
+	// Bijoux-after.
+	.elementor-menu-toggle {
+		&.elementor-active {
+			:is(i.eicon-menu-bar, .elementor-menu-toggle__icon--close) {
+				&::before {
+					font-family: 'vamtam-theme' !important;
+					content: icon('vamtam-theme-close-sample') !important;
+				}
+			}
+		}
+		// Preloading of the close icon.
+		i.eicon-menu-bar::after {
+			font-family: 'vamtam-theme';
+			content: icon('vamtam-theme-close-sample');
+			width: 0;
+			height: 0;
+			opacity: 0;
+			position: absolute;
+			overflow: hidden;
+		}
+	}
+
+	&:not(.vamtam-has-submenu-icon) {
+		.elementor-nav-menu .sub-arrow {
+			display: none;
+		}
+	}
+}
+
+// Testimonial-Carousel.
+.elementor-widget-testimonial-carousel {
+	// Make duplicates of slides that were hidden (inner anims, etc) visible.
+	.swiper-slide-duplicate {
+		.elementor-invisible {
+			visibility: visible;
+		}
+	}
+}
+
+// Section
+.elementor-section {
+	&.elementor-element {
+		padding-left: 30px;
+		padding-right: 30px;
+	}
+}
+
+// Tabs widget.
+.elementor-widget-tabs {
+	.elementor-tab-desktop-title {
+		padding: 20px;
+	}
+
+	.elementor-tabs-wrapper {
+		padding: 20px;
+	}
+
+	// Title numbering mask.
+	&.vamtam-has-numbering-bg {
+		.elementor-tab-title {
+			display: flex;
+			align-items: center;
+
+			.title-numbering {
+				width: 35px;
+				height: 36px;
+				margin-right: 10px;
+				display: flex;
+				justify-content: center;
+				align-items: center;
+			}
+
+			&.elementor-active .title-numbering {
+				// Base64 version of vamtam-tabs-numbering-bg.
+				background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzNSAzNiI+PHBhdGggZmlsbD0iIzE2NzI4NyIgZmlsbC1ydWxlPSJldmVub2RkIiBkPSJNMzAgNy4zYzQuMiA0LjMgMy44IDkuNiAzLjggMTUuMiAwIDUtMy4zIDguNS0zLjggOS0uNy44LTEuNiAxLjQtMi40IDJsLjEtLjJhNiA2IDAgMCAwIDIuNi0xLjkgMjEgMjEgMCAwIDAgMy41LTUuNmMuMS0uMS4zIDAgLjIuMWE5LjggOS44IDAgMCAxLTEuMyAzLjIgMjAuNyAyMC43IDAgMCAxLTIgMi43IDcuNCA3LjQgMCAwIDEtMi44IDIgMTkuNiAxOS42IDAgMCAxLTMuMiAxYy0xLjkuNy0zLjggMS01LjcgMS02LjctLjEtNy40LjUtMTMuMi00LjNBMTYuNyAxNi43IDAgMCAxIC41IDE1LjggMTMuMiAxMy4yIDAgMCAxIDMgMTAuNUM0IDkuMiA1IDggNi4yIDYuOGExOSAxOSAwIDAgMSA0LTNjMS41LS44IDMuMi0xLjQgNC44LTEuNiAxLjctLjMgMy40LS4yIDUgLjMuMyAwIC4yLjIgMCAuMi0xLjYtLjQtMy4zLS40LTQuOSAwLTEuNi4yLTMuMi44LTQuNiAxLjZsLS4zLjFjMi41LTEgNS4zLTEuNSA3LjYtMS43IDQuOC0uMyA4LjUgMSAxMi4yIDQuNnptLTMuMi0zLjlsLS4xLjItNS0zVi40YTExIDExIDAgMCAxIDUgM3oiLz48L3N2Zz4K');
+				background-repeat: no-repeat;
+				background-size: cover;
+			}
+		}
+	}
+
+	// Empty title button
+	&.vamtam-has-empty-title-button {
+		.elementor-tabs-wrapper {
+			padding-left: 0;
+			padding-right: 0;
+			align-items: center;
+		}
+
+		&.vamtam-has-nav-over-content {
+			.elementor-tabs-wrapper {
+				position: absolute;
+				top: 0;
+				bottom: 0;
+				z-index: 1;
+			}
+		}
+
+		.elementor-tab-title {
+			padding: 0 20px;
+		}
+
+		.vamtam-no-title {
+			a {
+				display: block;
+				background-color: var(--vamtam-accent-color-4);
+			}
+			&.elementor-active {
+				a {
+					background-color: var(--vamtam-accent-color-3);
+				}
+			}
+		}
+	}
+
+	// Disable default switch-tab js animation.
+	&.vamtam-has-disable-def-anim {
+		.elementor-tab-content.elementor-active {
+			display: block !important;
+		}
+	}
+
+	// Bijoux-only.
+	&.vamtam-bijoux-el-tabs {
+		&.elementor-tabs-view-vertical .elementor-tabs {
+			flex-direction: row-reverse;
+			.elementor-tabs-wrapper {
+				display: flex;
+				flex-direction: column;
+				justify-content: center;
+			}
+			.elementor-tab-title:not(:last-child) {
+				margin-bottom: 5px;
+			}
+			.elementor-tab-desktop-title.vamtam-no-title > a {
+				width: 10px !important;
+				height: 10px !important;
+				transform: rotate(45deg);
+			}
+		}
+	}
+
+	// Bijoux-only.
+	&.vamtam-bijoux-tabs-mega-menu {
+		.elementor-tab-title {
+			&:extend( .vamtam-font-h3 );
+			line-height: 64px;
+			font-weight: normal;
+		}
+		&.elementor-tabs-view-vertical .elementor-tabs {
+			.elementor-tabs-wrapper {
+				display: flex;
+				flex-flow: column nowrap;
+				justify-content: center;
+				overflow: visible;
+			}
+			.elementor-tab-desktop-title {
+				padding: 10px;
+				a {
+					display: flex;
+					align-items: center;
+					width: min-content;
+					.bijoux-btn-line-prefix();
+					.vamtam-prefix {
+						height: 1px;
+						opacity: 0;
+					}
+				}
+
+				&:not(.elementor-active) a:not(:hover) {
+					opacity: .3;
+				}
+
+				&.elementor-active {
+					.vamtam-prefix {
+						animation: vamtam-line-prefix-grow 1s forwards ease;
+						opacity: 1;
+					}
+				}
+			}
+		}
+		i {
+			transition: all .3s ease !important;
+		}
+		&:hover i {
+			color: var(--vamtam-accent-color-1) !important;
+		}
+	}
+
+	// Bijoux-only.
+	.elementor-tab-desktop-title {
+		padding: 20px 0;
+	}
+	.elementor-tab-content {
+		padding: 0;
+	}
+}
+
+// Products archives.
+.elementor-widget-wc-archive-products {
+	> .elementor-widget-container {
+		border-left-width: 0;
+		border-right-width: 0;
+	}
+	.woocommerce-result-count,
+	.woocommerce-ordering {
+		margin: 20px 0;
+	}
+	.woocommerce-ordering select {
+		margin-bottom: 0 !important;
+		padding-right: 40px;
+		// Bijoux-only.
+		border: 0;
+	}
+	.woocommerce-result-count {
+		padding-top: 15px;
+		padding-bottom: 15px;
+	}
+	&.elementor-widget {
+		// Products archives only.
+		&.elementor-element.elementor-wc-products .navigation {
+			.next:after,
+			.prev:after {
+				top: unset;
+				vertical-align: middle;
+			}
+		}
+	}
+}
+
+// Products.
+.elementor-widget-woocommerce-products {
+	&.vamtam-has-hide-price {
+		.products .product span.price {
+			display: none;
+		}
+	}
+
+	&.vamtam-has-no-headers {
+		.products.table-layout .vamtam-headers {
+			display: none;
+		}
+	}
+
+	// Table layout defaults.
+	.table-layout {
+		.product {
+			.woocommerce-loop-product__title {
+				font-size: 1em;
+			}
+
+			// Theme-dependant.
+			.price {
+				font-weight: 400;
+				font-size: .857em;
+			}
+
+			.quantity input {
+				width: 100%;
+
+				// Theme dependant.
+				border-width: 0 0 1px 0;
+			}
+
+			.vamtam-add-to-cart-wrap {
+				> a.button,
+				> .added_to_cart,
+				> .add_to_cart {
+					width: 100%;
+				}
+			}
+		}
+		.vamtam-headers {
+			th {
+				&:extend(.vamtam-font-h6);
+			}
+		}
+		tr, th, td {
+			border: solid var(--vamtam-default-line-color) 1px;
+			padding: 0;
+			margin: 0;
+		}
+	}
+}
+
+// Products Categories
+.elementor-widget-wc-categories {
+	&:not(.vamtam-no-count--yes) {
+		.woocommerce-loop-category__title .count {
+			display: none;
+		}
+	}
+
+	&.vamtam-has-hide-title {
+		.woocommerce-loop-category__title {
+			display: none;
+		}
+	}
+
+	// Bijoux-only
+	ul.products {
+		li.product-category {
+			&.product {
+				.vamtam-product-cat-content {
+					&, .vamtam-cat-first-letter, .woocommerce-loop-category__title {
+						position: absolute;
+						top: 0;
+						left: 0;
+						bottom: 0;
+						right: 0;
+						display: flex;
+						flex-direction: column;
+						justify-content: center;
+						align-items: center;
+						padding: 0;
+						margin: 0;
+					}
+
+					&, > * {
+						transition: all .5s ease !important;
+					}
+					background-color: transparent;
+
+					.vamtam-cat-first-letter {
+						opacity: 0;
+						font-size: 170px;
+						line-height: normal;
+						font-family: var(--vamtam-h1-font-family);
+						color: var(--vamtam-accent-color-2);
+						filter: blur(20px);
+						transition-duration: 1s !important;
+					}
+				}
+				:not(:hover) .vamtam-product-cat-content > * {
+					transform: translateY(15%) !important;
+				}
+				&:hover {
+					&, > *, .vamtam-product-cat-content, .vamtam-product-cat-content > * {
+						transform: none;
+					}
+					.vamtam-product-cat-content {
+						background-color: var(--vamtam-accent-color-3);
+
+						.vamtam-cat-first-letter {
+							opacity: .1;
+							filter: blur(0);
+							padding-top: .2em;
+						}
+					}
+					> a img {
+						transform: scale(1.1);
+					}
+				}
+			}
+			.woocommerce-loop-category__title {
+				font-size: 60px;
+				padding: 0;
+				line-height: normal;
+				color: var(--vamtam-accent-color-2);
+			}
+		}
+		&.vamtam-wc {
+			grid-column-gap: 60px;
+		}
+	}
+}
+
+// Product Images.
+.elementor-widget-woocommerce-product-images {
+	&.vamtam-has-full-sized-gallery:not(.vamtam-mobile-gallery) {
+		.woocommerce-product-gallery__wrapper,
+		.woocommerce-product-gallery--vamtam__wrapper {
+			display: grid;
+			grid-template-columns: 1fr;
+			justify-content: center;
+			align-items: center;
+
+			.woocommerce-product-gallery__image,
+			.woocommerce-product-gallery--vamtam__image {
+				width: 100% !important;
+			}
+		}
+	}
+
+	.woocommerce-product-gallery {
+		&.vamtam-hide {
+			opacity: 0 !important;
+		}
+
+		.woocommerce-product-gallery__image > a:not([href]) {
+			pointer-events: none;
+		}
+	}
+
+	// Bijoux-only.
+	&.elementor-element > .elementor-widget-container div.images {
+		margin-bottom: 0;
+	}
+}
+
+// Add To Cart.
+.elementor-widget-woocommerce-product-add-to-cart {
+	// Bijoux-only.
+	&.vamtam-has-bijoux-alt {
+		// Bijoux Alt btn type (line prefix).
+		.bijoux-elementor-btn-line-prefix();
+	}
+
+	// Bijoux-only.
+	.elementor-add-to-cart.elementor-product-variable {
+		.variations {
+			td {
+				padding: 0;
+			}
+		}
+	}
+
+	form.cart {
+		.added_to_cart.wc-forward {
+			display: none;
+		}
+	}
+
+	&.elementor-add-to-cart--align-justify {
+		.added_to_cart {
+			flex-basis: 100%;
+		}
+	}
+
+	.cart {
+		&.variations_form {
+			.variations {
+				td {
+					width: 100%;
+					display: block;
+					text-align: start;
+				}
+				th {
+					width: 100%;
+					display: block;
+					text-align: start;
+					margin-bottom: 5px;
+				}
+
+				input, textarea, select {
+					width: 100%;
+				}
+			}
+
+			.reset_variations {
+				visibility: hidden !important;
+				display: none !important;
+
+			}
+
+			.woocommerce-variation-price .price {
+				color: inherit;
+				display: flex;
+				flex-direction: row;
+				align-items: baseline;
+			}
+		}
+	}
+
+	.single-product .sold-individually &,
+	.stock.last-one ~ .cart {
+		.single_add_to_cart_button.button[type="submit"] {
+			margin-left: 0;
+		}
+	}
+}
+
+// Product Meta.
+.elementor-widget-woocommerce-product-meta {
+	// Bijoux-only.
+	&.elementor-element {
+		.product_meta {
+			padding: 0;
+			border: 0;
+		}
+		span.detail-content a,
+		span.detail-label {
+			font-family: var(--vamtam-primary-font-font-family);
+			font-weight: bold;
+			font-size: 14px;
+			letter-spacing: 1.17px;
+			line-height: 21px;
+			text-transform: capitalize;
+		}
+		.detail-label {
+			margin-right: 30px;
+			color: var(--vamtam-accent-color-3);
+		}
+		.detail-content a {
+			border: 0;
+			border-bottom: solid 1px var(--vamtam-accent-color-3);
+			padding: 0;
+			color: #D8D8D8;
+
+			&:hover {
+				background: none;
+				background-color: none;
+				color: var(--vamtam-accent-color-1);
+				border-color: var(--vamtam-accent-color-3);
+			}
+		}
+	}
+}
+
+// Menu cart widget.
+// @import (reference) "../../../mixins.less";
+// @import (reference) "../../../../buttons.less";
+.elementor-widget-woocommerce-menu-cart {
+
+	.elementor-menu-cart__container.elementor-menu-cart--shown {
+		background-color: rgba(0,0,0,.80);
+	}
+
+	.elementor-menu-cart__container:not(.elementor-menu-cart--shown) .elementor-menu-cart__main {
+		opacity: 1;
+	}
+
+	.elementor-menu-cart__container .elementor-menu-cart__main {
+		width: 30%;
+		// Bijoux-after.
+		min-width: 500px;
+		display: grid;
+		grid-template-columns: 1fr;
+		grid-template-rows: min-content auto;
+		overflow-y: auto;
+		@top-padding: 2%;
+		padding: @top-padding 0 0 0; // put bottom padding in .widget_shopping_cart_content to negate how overflow: scroll works.
+		font-size: 100%;
+
+		// Ipad safari fix.
+		body[data-elementor-device-mode="tablet"].e--ua-safari & {
+			// On safari (Ipad) there seems to be an issue with applying the proper
+			// intrinsic (1fr) parent height value.
+			height: calc(100% - @top-padding);
+		}
+
+		> .vamtam-elementor-menu-cart__header,
+		> .widget_shopping_cart_content .cart_item,
+		> .widget_shopping_cart_content > :not(.woocommerce-cart-form__contents) {
+			padding-left: 7%; // Should also be replicated in Elementor selector (woocommerce-menu-cart.php->padding for footer btns).
+			padding-right: 7%; // Should also be replicated in Elementor selector (woocommerce-menu-cart.php->padding for footer btns).
+		}
+
+		.widget_shopping_cart_content {
+			display: grid;
+			grid-template-columns: 1fr;
+			grid-template-rows: 1fr min-content min-content;
+
+			// Empty side cart
+			.woocommerce-mini-cart__empty-message {
+				position: absolute;
+				top: 50%;
+				left: 50%;
+				transform: translate(-50%,-50%);
+
+				&:before {
+					content: "\e8e4";
+					display: block;
+					font-family: eicons;
+					font-size: 10em;
+					font-weight: 400;
+					font-style: normal;
+					font-variant: normal;
+					line-height: 1;
+					text-rendering: auto;
+					-webkit-font-smoothing: antialiased;
+					color: var(--vamtam-accent-color-6);
+					margin-bottom: 20px;
+				}
+			}
+		}
+
+		.vamtam-elementor-menu-cart__header {
+			display: flex;
+			align-items: center;
+			font-size: 16px;
+			font-weight: bold;
+			color: var(--vamtam-accent-color-6);
+			padding-bottom: 20px;
+
+			.elementor-menu-cart__close-button {
+				margin: 0;
+				margin-left: auto;
+				align-self: center;
+				width: auto;
+				height: auto;
+				display: flex;
+				flex-direction: column;
+				justify-items: center;
+
+				&::before,
+				&::after {
+					display: none;
+				}
+			}
+
+			.elementor-menu-cart__close-button-custom {
+				margin-bottom: 0;
+				margin-top: 0;
+				align-self: center;
+			}
+
+			span.label {
+				margin-right: 15px;
+			}
+		}
+
+		.elementor-menu-cart__footer-buttons {
+			padding-top: 20px;
+			padding-bottom: 20px;
+			grid-row: 3;
+
+			.elementor-button--checkout {
+				order: 1;
+			}
+
+			.elementor-button--view-cart {
+				order: 2;
+			}
+
+			> a {
+				line-height: 30px;
+				height: 100%;
+			}
+		}
+
+		.elementor-menu-cart__product,
+		.elementor-menu-cart__products,
+		.elementor-menu-cart__subtotal {
+			border-color: var(--vamtam-accent-color-7);
+		}
+
+		.vamtam-base-cart-styles();
+
+		// Bijoux-only.
+		.vamtam-close-cart {
+			font-size: 18px;
+		}
+
+		//base style overrides so mobile styles are always used for menu cart.
+		.product-name,
+		.product-remove {
+			display: flex;
+			align-items: stretch;
+			border: none;
+			border-radius: 0;
+		}
+
+		.product-remove {
+			grid-row: 1;
+			position: relative;
+			bottom: 0;
+
+			.vamtam-close.vamtam-trash {
+				font-size: var(--remove-item-button-size, calc(1em - 3px));
+			}
+
+			a.remove_from_cart_button {
+				display: flex;
+				flex-wrap: nowrap;
+			}
+		}
+		.product-price {
+			grid-column: 1/4;
+			padding-top: 20px;
+			color: inherit;
+			&, .amount {
+				font-weight: inherit;
+			}
+		}
+		.product-name {
+			flex-direction: column;
+			padding-top: 0;
+			padding-left: 20px;
+			padding-right: 25px;
+		}
+		.product-name,
+		.product-price {
+			font-size: 100%;
+		}
+		.product-thumbnail {
+			grid-row: 1/3;
+			> a, > a > img {
+				display: block;
+			}
+		}
+		.cart_item {
+			grid-template-rows: auto;
+			grid-template-columns: 25% auto auto;
+			padding-top: 20px;
+			padding-bottom: 10px;
+		}
+	}
+
+	.elementor-menu-cart__container {
+		height: 100vh; // elementor pro 3.6 fix
+
+		.elementor-menu-cart__subtotal {
+			grid-row: 2;
+			display: flex;
+			padding:  30px 0;
+			color: var(--vamtam-accent-color-6);
+			font-size: 16px;
+
+			.woocommerce-Price-amount {
+				margin-left: auto;
+			}
+		}
+		.elementor-menu-cart__main {
+			.product-remove a {
+				color: e("color( from var(--vamtam-accent-color-3) srgb r g b / .2 )");
+				&:hover {
+					color: var(--vamtam-accent-color-1);
+				}
+			}
+		}
+	}
+
+	.elementor-menu-cart__toggle .elementor-button-icon-qty[data-counter] {
+		letter-spacing: normal;
+	}
+
+	// This fixes an issue where the card icon flickers on page-load when the "Show Empty" option is used.
+	&.elementor-menu-cart--empty-indicator-hide .elementor-menu-cart__toggle .elementor-button-icon-qty[data-counter="0"] {
+		&, :before {
+			display: none !important;
+		}
+	}
+
+	// This fixes a bug where the "Show Empty" option is set to true but the empty cart is still getting hidden from js.
+	&.hidden:not(.elementor-menu-cart--empty-indicator-hide) {
+		display: block;
+		visibility: visible;
+	}
+	// Above rule should not apply to sticky-header spacer el.
+	.elementor-sticky__spacer &.hidden:not(.elementor-menu-cart--empty-indicator-hide) {
+		display: none;
+		visibility: hidden;
+	}
+
+	// Remove btn - Increased specificity.
+	&:not(.elementor-menu-cart--show-remove-button-yes) .elementor-menu-cart__product-remove {
+		display: none;
+	}
+
+	// Divider - Increased specificity.
+	&.elementor-menu-cart--show-divider-yes .elementor-menu-cart__product:not(:last-of-type),
+	&.elementor-menu-cart--show-divider-yes .elementor-menu-cart__products,
+	&.elementor-menu-cart--show-divider-yes .elementor-menu-cart__subtotal {
+		border-bottom-width: 1px;
+		border-bottom-style: solid;
+	}
+
+	// Bijoux-only.
+	&.vamtam-has-bijoux-alt .elementor-menu-cart__footer-buttons {
+		.elementor-button--checkout,
+		.elementor-button--view-cart {
+			position: relative;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+		}
+		// Bijoux Alt btn type (line prefix).
+		.bijoux-elementor-btn-line-prefix();
+	}
+
+	// Bijoux-only.
+	&.vamtam-bijoux-menu-cart-icon {
+		.elementor-menu-cart__toggle .elementor-button-icon i:before {
+			font-family: 'theme-icons' !important;
+			content: "\e904" !important;
+		}
+	}
+
+	// This is so the global button hover styles are not overriding the local cart toggle styles (cart toggle does not have hover styles atm).
+	.elementor-menu-cart__toggle .elementor-button:is(:hover, :focus) {
+		border: var(--toggle-button-border-width,1px) var(--toggle-button-border-type,solid) var(--toggle-button-border-color,#818a91)
+	}
+	// This is to keep the items number vertically centered on the cart toggle (bubble).
+	&.elementor-menu-cart--items-indicator-bubble .elementor-menu-cart__toggle .elementor-button-icon .elementor-button-icon-qty[data-counter] {
+		line-height: 1;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+		text-decoration: none;
+	}
+
+	// This is to override the global button options (if set).
+	.elementor-menu-cart__toggle .elementor-button:focus {
+		background-color: var( --toggle-button-hover-background-color, transparent);
+	}
+
+	input.vamtam-quantity-input {
+		text-align: center;
+		outline: none;
+		min-height: 30px;
+		padding: 8px 30px;
+	}
+}
+.woocommerce {
+	&.woocommerce-cart,
+	&.woocommerce-checkout {
+		.elementor-widget-woocommerce-menu-cart {
+			&.vamtam-has-hide-cart-checkout {
+				display: none;
+			}
+		}
+	}
+}
+
+// password reset
+.elementor-widget-woocommerce-my-account {
+	.e-my-account-tab:not(.e-my-account-tab__dashboard--custom) .woocommerce .woocommerce-ResetPassword .form-row-last {
+		width: 100%;
+	}
+}
+
+// Posts widget.
+.elementor-widget-posts {
+	.elementor-post {
+		.elementor-post__thumbnail {
+			.vamtam-shape {
+				// Theme-dependant. Each theme should apply it's own post thumb (if supported).
+				background-image: url('data:image/svg+xml,<svg fill="%23f4f1ea" width="100" height="26" xmlns="http://www.w3.org/2000/svg"><path d="M0 1C11.848.948 22.762 5.655 31.096 14.02c4.504 5.062 11.657 7.96 18.46 7.96a23.801 23.801 0 0 0 17.79-7.96C75.696 5.695 88.167 1 100 1v24.987H0V1z"/></svg>');
+
+				position: absolute;
+				background-repeat: repeat-x;
+				left: 0;
+				bottom: 0;
+				width: 100%;
+				height: 26px;
+				z-index: 1000;
+			}
+		}
+	}
+}
+
+// Post Navigation.
+.elementor-widget-post-navigation {
+	// Bijoux-only.
+	span.post-navigation__prev--label,
+	span.post-navigation__next--label {
+		font-size: 11px;
+		font-weight: 800;
+		text-transform: uppercase;
+		line-height: 1em;
+		padding-bottom: 14px;
+	}
+	.elementor-post-navigation__separator {
+		margin-left: 15px;
+		margin-right: 15px;
+	}
+}
+
+// Social-Icons widget.
+.elementor-widget-social-icons {
+	&.vamtam-layout-vertical {
+		.elementor-social-icons-wrapper {
+			display: flex;
+			flex-direction: column;
+		}
+	}
+
+	.elementor-icon {
+		&, i {
+			transition-duration: .5s;
+		}
+	}
+	// If exists, local option should override kit/global one.
+	a.elementor-icon {
+		font-size: var(--icon-size);
+	}
+}
+
+// Call to action.
+.elementor-widget-call-to-action {
+	// This is to override possible global link text-decoration styles
+	// cause of the way text-decoration works on descendants (only for whole box link).
+	.elementor-widget-container > a {
+		&, &:hover {
+			text-decoration: unset;
+		}
+	}
+
+	// Team Member Skin.
+	&[data-widget_type="call-to-action.team-member"] {
+		.vamtam-tm-social-links-wrap {
+			transition: all .4s ease;
+			.vamtam-tm-social-links {
+				list-style: none;
+				margin: 0;
+				padding: 0;
+				line-height: 1;
+				li {
+					list-style: none;
+					margin: 0;
+					padding: 0;
+					vertical-align: top;
+				}
+			}
+
+			li,
+			.vamtam-tm-social-icon,
+			.vamtam-tm-divider {
+				display: inline-block;
+			}
+
+			.vamtam-tm-social-icon-wrap {
+				display: inline-flex;
+			}
+		}
+	}
+
+	// Class Skin.
+	&[data-widget_type="call-to-action.class"] {
+		.vamtam-class-info-wrap {
+			transition: all .4s ease;
+			.vamtam-class-info {
+				list-style: none;
+				margin: 0;
+				padding: 0;
+				line-height: 1;
+				li {
+					list-style: none;
+					margin: 0;
+					padding: 0;
+					vertical-align: top;
+				}
+			}
+
+			li,
+			.vamtam-class-info-icon,
+			.vamtam-tm-divider {
+				display: inline-block;
+			}
+
+			.vamtam-class-info-content-wrap {
+				display: inline-flex;
+				justify-content: center;
+				align-items: center;
+				&, .vamtam-class-info-icon, .vamtam-class-info-text {
+					transition: all .3s ease;
+				}
+			}
+		}
+	}
+
+	// Fix for Safari border radius with overflow:hidden bug.
+	body.e--ua-safari &.elementor-bg-transform .elementor-widget-container {
+		-webkit-mask-image: -webkit-radial-gradient(white, black);
+	}
+}
+
+// Search form
+.elementor-widget-search-form {
+	&.elementor-search-form--skin-full_screen .elementor-search-form__container {
+		background-color: var(--vamtam-accent-color-1);
+		opacity: .9;
+
+		::-webkit-search-cancel-button {
+			display: none;
+		}
+
+		input.elementor-search-form__input {
+			font-size: 9em;
+			line-height: 1.3em;
+			&, &:focus {
+				text-align: start;
+				color: var(--vamtam-accent-color-2);
+				border-color: var(--vamtam-accent-color-2);
+				border-width: 0 0 3px 0;
+				border-radius: 0;
+				padding-left: 0;
+				padding-right: 0;
+
+				&::placeholder {
+					color: inherit;
+					opacity: .5;
+				}
+			}
+		}
+
+		.dialog-close-button {
+			color: var(--vamtam-accent-color-2);
+			font-size: 3em;
+			right: .6em;
+			top: .6em;
+			margin-top: 0;
+			padding: .2em;
+		}
+	}
+}
+
+// Vamtam Animated Headline.
+.elementor-widget-vamtam-animated-headline {
+	// Blurred letters anim.
+	// Anim triggering is being handled from vamtam-animated-headline.js
+	&.elementor-headline--style-blurred_letters {
+		@keyframes vamtam-blurred-letters {
+			0% {
+				filter: blur(10px);
+				opacity: 0;
+			}
+			20% {
+				filter: blur(10px);
+				opacity: 0;
+			}
+			100% {
+				filter: blur(0);
+				opacity: 1;
+			}
+		}
+		.vamtam-word {
+			position: relative;
+			display: inline-flex;
+			.vamtam-letter {
+				opacity: 0;
+			}
+		}
+	}
+
+	.elementor-headline {
+		margin: 0;
+	}
+}
+
+// Form.
+.elementor-widget-form {
+	.elementor-field-type-acceptance {
+		.elementor-field-option {
+			display: flex;
+			align-items: center;
+		}
+	}
+
+	// Bijoux-only.
+	.elementor-field-group:not(.elementor-field-type-upload) {
+		.elementor-field:not(.elementor-select-wrapper) {
+			min-height: 60px;
+			line-height: 1.5;
+			caret-color: var(--vamtam-accent-color-1);
+			background-color: #ffffff;
+    		border-color: var( --vamtam-accent-color-4 );
+			&:focus,
+			&:active {
+				border-top: 1px solid var(--vamtam-accent-color-3) !important;
+			}
+		}
+
+		// Prefix grow - hover animation.
+		.elementor-button {
+			&[class*="elementor-animation-prefix-grow"] {
+				@prefix-width: 10px;
+				@prefix-active-width: 25px;
+				@prefix-height: 1px;
+
+				&:before {
+					content: "";
+					display: block;
+					height: @prefix-height;
+					width: @prefix-width;
+					transition: background-color .4s ease, width .4s ease;
+					background-color: var(--vamtam-accent-color-3);
+				}
+				&:hover {
+					&:before {
+						background-color: var(--vamtam-accent-color-1);
+						width: @prefix-active-width;
+					}
+				}
+			}
+			&.elementor-animation-prefix-grow {
+				> span {
+					padding-left: 20px;
+				}
+				&:before {
+					position: absolute;
+					top: calc(50% - .5px);
+					transform: translateX(calc( -100% + 10px ));
+				}
+			}
+			&.elementor-animation-prefix-grow-alt {
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				&:before {
+					margin-right: 10px;
+				}
+			}
+		}
+	}
+
+	// Bijoux-only.
+	&.vamtam-has-bijoux-alt {
+		// Bijoux Alt btn type (line prefix).
+		.bijoux-elementor-btn-line-prefix();
+	}
+}
+
+// Slides.
+.elementor-widget-slides {
+	.elementor-swiper-button {
+		transition: color .3s ease;
+	}
+	&.elementor-arrows-position-overlap {
+		.elementor-swiper-button-prev {
+			left: -.6em;
+		}
+		.elementor-swiper-button-next {
+			right: -.6em;
+		}
+	}
+
+	// Bijoux-only.
+	.swiper-slide-inner {
+		padding: 0;
+	}
+}
+
+// Popup Modal
+.elementor-popup-modal {
+	// Bijoux-only
+	&.vamtam-bijoux-popup-close-icon {
+		.dialog-close-button {
+			transition: color .3s ease;
+			&:hover {
+				color: var(--vamtam-accent-color-1);
+			}
+			i::before {
+				font-family: 'vamtam-theme' !important;
+				content: icon('vamtam-theme-close-sample') !important;
+			}
+		}
+	}
+}
+
+.elementor-post-navigation {
+	.post-navigation__next--label,
+	.post-navigation__next--title,
+	.post-navigation__prev--label,
+	.post-navigation__prev--title {
+		white-space: normal;
+		overflow: visible;
+	}
+}
+
+/*
+Fix for Elementor Pro v3.12.0 adding the editor's color-scheme to the page.
+TODO: Remove when fixed.
+*/
+@media (prefers-color-scheme: dark) {
+	:root {
+		color-scheme: unset;
+	}
+}
+
+.dialog-widget-content {
+	background-color: #fff;
+}
+
+// iOS - Safari Disable Link Preview.
+body.e--ua-isTouchDevice.e--ua-appleWebkit a {
+	-webkit-tap-highlight-color: transparent;
+	-webkit-touch-callout: none;
+}
+

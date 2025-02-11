@@ -1,0 +1,236 @@
+@menu-height: 60px;
+
+#menus {
+	position: relative;
+	z-index: 210;
+	min-height: @menu-height;
+
+	display: flex;
+	align-items: center;
+	justify-content: center;
+
+	#main-menu ul.mega-menu li.menu-item-gtranslate {
+		display: inline-block;
+		vertical-align: middle;
+		padding-left: 10px;
+	}
+}
+
+#main-menu {
+	width: 100%;
+
+	.menu {
+		display: flex;
+		flex-flow: row wrap;
+		justify-content: flex-end;
+
+		.header-layout-standard & {
+			justify-content: center;
+		}
+
+		> .menu-item {
+			padding: 0 1.5px;
+			color: var( --vamtam-primary-font-color );
+
+			&:not(:last-child) {
+				margin-right: 30px;
+			}
+
+			a {
+				font: 700 12px/14px Lato;
+				letter-spacing: 2.3px;
+				text-transform: uppercase;
+			}
+
+			.second-row:last-child &:last-child {
+				padding-right: 0;
+			}
+
+			> a {
+				padding: 0 15px;
+				text-transform: uppercase;
+				display: inline-block;
+				color: var( --vamtam-accent-color-3 );
+				font: 700 12px/50px Lato;
+				height: 50px;
+
+				&::before {
+					content: "";
+					display: block;
+					position: absolute;
+					left: 0;
+					top: calc( 50% - 1px );
+					z-index: -1;
+					height: 1px;
+					width: 10px;
+					background: #000;
+					transition: transform .4s ease;
+					transform-origin: center right;
+				}
+			}
+
+			&.current-menu-item,
+			&.current_page_item,
+			&.current-menu-ancestor,
+			&.current-menu-parent,
+			&.current_page_parent,
+			&.current_page_ancestor,
+			&:hover {
+				> a {
+					&::before {
+						background: var( --vamtam-accent-color-1 );
+						transform: scaleX(2.5);
+					}
+
+					span {
+						position: relative;
+						color: var( --vamtam-accent-color-6 );
+						font-weight: bold;
+					}
+				}
+			}
+
+			.sub-menu {
+				position: absolute;
+				top: 0;
+				left: 0;
+				width: 200px;
+				text-align: start;
+				background: #fff;
+				box-sizing: border-box;
+				text-transform: none;
+				z-index: 999;
+
+				a {
+					display: block;
+					padding: 15px 20px;
+					color: var( --vamtam-accent-color-3 );
+					font-family: "Lato", Sans-serif;
+					font-size: 12px;
+					font-weight: bold;
+					text-transform: uppercase;
+					letter-spacing: 2.3px;
+					line-height: 20px;
+				}
+
+				.menu-item {
+					position: relative;
+					font-weight: 400;
+					font-size: 14px;
+					line-height: 20px;
+
+					&:not(:last-child) {
+						&::after {
+							content: "";
+							display: block;
+							position: absolute;
+							bottom: 0;
+							left: 47.5%;
+							width: 5%;
+							height: 1px;
+							background: var( --vamtam-accent-color-1 );
+						}
+					}
+
+					> .sub-menu-wrapper > .sub-menu {
+						left: 100%;
+						margin: 0;
+
+						&.invert-position {
+							left: -100%;
+						}
+					}
+
+					&:hover > .sub-menu-wrapper > .sub-menu {
+						display: block;
+					}
+
+					&.current-menu-item,
+					&.current_page_item,
+					&.current-menu-ancestor,
+					&.current-menu-parent,
+					&.current_page_parent,
+					&.current_page_ancestor,
+					&:hover {
+						> a {
+							color: var(--vamtam-accent-color-1);
+						}
+					}
+				}
+			}
+
+			> .sub-menu-wrapper {
+				position: relative;
+
+				> .sub-menu {
+					margin: 0 auto auto 0;
+				}
+			}
+
+			&:hover {
+				>.sub-menu-wrapper {
+					> .sub-menu {
+						display: block;
+					}
+				}
+			}
+		}
+	}
+
+	.max-menu-mirror;
+}
+
+.max-menu-mirror() {
+	font-size: 16px;
+	font-weight: 300;
+
+	.menu{
+		align-items: center;
+		margin: 0;
+
+		.menu-item {
+			cursor: pointer;
+			margin: 0;
+			display: block;
+			height: auto;
+			vertical-align: middle;
+
+			> a {
+				padding: 12px 20px;
+				vertical-align: baseline;
+				width: auto;
+				display: block;
+				text-decoration: none;
+				text-align: center;
+				text-decoration: none;
+				background: rgba(0, 0, 0, 0);
+				border: 0;
+				border-radius: 0;
+				outline: none;
+
+				bottom: auto;
+				display: block;
+				height: auto;
+				left: auto;
+				position: relative;
+				pointer-events: auto;
+				right: auto;
+				top: auto;
+				width: auto;
+				word-wrap: break-word;
+			}
+		}
+	}
+}
+
+body.sticky-header-type-over.sticky-header .sticky-header-state-reset:not(:hover)  #menus .vamtam-basic-menu li {
+	&.menu-item > a {
+		color: var( --vamtam-main-menu-text-sticky-color ) !important;
+		transition: all .3s ease !important;
+
+		&:hover {
+			color: var( --vamtam-main-menu-text-sticky-color ) !important;
+			opacity: 0.8 !important;
+		}
+	}
+}

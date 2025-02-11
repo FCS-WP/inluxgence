@@ -1,0 +1,593 @@
+@import '../mixins.less';
+
+body.responsive-layout {
+	.alignwide,
+	.alignfull {
+		&.wp-block-columns {
+			margin-left: 20px !important;
+			margin-right: 20px !important;
+		}
+	}
+
+	#scroll-to-top {
+		bottom: 20px;
+	}
+
+	.vamtam-main:not(.layout-full) {
+		.vamtam-box-outer-padding,
+		.limit-wrapper {
+			padding-left: 0;
+			padding-right: 0;
+		}
+	}
+
+	&.woocommerce.single,
+	&:not(.elementor-page) {
+		&:not(.layout-full) .page-wrapper > article:last-child > .page-content:last-child {
+			padding-bottom: 80px;
+		}
+	}
+
+	&.has-page-header {
+		&.woocommerce,
+		&.single-jetpack-portfolio,
+		&:not(.elementor-page),
+		&.archive {
+			article > .page-content {
+				padding-top: 30px;
+			}
+		}
+
+		&:not(.fl-builder) {
+			article > .page-content {
+				.meta-top {
+					padding-top: 0;
+				}
+			}
+		}
+	}
+
+	header.main-header .header-padding,
+	&:not(.vamtam-is-elementor) .vamtam-main:not(.layout-full) article,
+	.page-wrapper > .vamtam-body-sidebar,
+	.vamtam-main:not(.layout-full) .vamtam-related-content {
+		padding-left: 30px;
+		padding-right: 30px;
+	}
+
+	.limit-wrapper .limit-wrapper {
+		padding: 0;
+	}
+
+	.vamtam-expand-scroll-content {
+		width: auto !important;
+	}
+
+	.vamtam-main:not(.layout-full) .comments-wrapper {
+		margin-bottom: 80px;
+		padding-left: 0px;
+		padding-right: 0px;
+	}
+
+	#main.layout-full .comments-wrapper {
+		max-width: 100%;
+	}
+	.comments-wrapper {
+		label {
+			padding-left: 0;
+		}
+	}
+
+	#commentform {
+		padding-top: 0px;
+
+		p {
+			margin-left: 0 !important;
+		}
+
+		.comment-form-cookies-consent {
+			> input {
+				align-self: flex-start;
+			}
+			> label {
+				margin-top: -.2em; // To negate line-height (first-line).
+			}
+		}
+	}
+
+	&.page-template-guestbook-php {
+		#comments-list {
+			margin-bottom: 30px;
+		}
+		.limit-wrapper {
+			padding-left: 10px;
+			padding-right: 10px;
+		}
+		#commentform {
+			padding-top: 20px;
+			padding-bottom: 0px;
+		}
+		.respond-box {
+			padding: 10px;
+
+			#reply-title {
+				display: none;
+			}
+		}
+
+	}
+
+	#commentform .form-submit {
+		float: none;
+	}
+
+	.comment-notes {
+		padding-bottom: 20px;
+		clear: both;
+	}
+	&.single-product .main-container {
+		border-top: none;
+	}
+	.comments,
+	.woocommerce #reviews #comments {
+		.comment-meta-left {
+			flex-flow: column;
+			align-items: flex-start;
+			max-width: 60%;
+
+			.comment-time {
+				border-left: 0;
+				padding-left: 0;
+			}
+		}
+
+		.comment-author {
+			flex: 0 1 30px;
+		}
+
+		.avatar {
+			max-width: 30px !important;
+		}
+
+		.comment {
+			min-height: inherit;
+			padding-top: 15px;
+
+			.comment {
+				padding-left: 0;
+				margin-left: 15px;
+				padding-top: 15px;
+
+				.comment-content {
+					padding-left: 15px;
+					padding-bottom: 15px;
+				}
+			}
+		}
+	}
+	.quantity input.qty,
+	#quantity input.qty {
+		padding: 5px;
+	}
+
+	.error-message {
+		display: none;
+	}
+
+	html {
+		background-image: none;
+	}
+
+	.move-into-slider .icon.shortcode.box {
+		padding: 0.1em;
+	}
+
+	.move-into-slider {
+		margin-top: 0px;
+	}
+
+	aside.left {
+		order: 3;
+	}
+	.vamtam-body-sidebar {
+		margin-top: 0 !important;
+	}
+
+	.vamtam-body-sidebar,
+	.page-wrapper > article {
+		width: auto;
+		max-width: none;
+		flex: 0 1 auto ;
+	}
+	.page-wrapper {
+		flex-direction: column;
+	}
+	aside .menu-item > .sub-menu {
+		display: none !important;
+	}
+
+	.vamtam-woocommerce-cart-form-wrapper {
+		flex-direction: column;
+
+		.vamtam-cart-collaterals {
+			flex-basis: auto;
+			padding: 0px !important;
+			background-color: var(--vamtam-accent-color-7);
+
+			.cart-collaterals {
+				margin-top: 30px;
+				background-color: var(--vamtam-accent-color-5);
+			}
+		}
+
+	}
+
+	// Standart cart
+	&.woocommerce.woocommerce-cart {
+		.cross-sells {
+			ul.products {
+				grid-template-columns: repeat(2, 1fr);
+			}
+		}
+	}
+
+	&.single-post .single-post-wrapper {
+		.post-media {
+			margin: 0px;
+
+			.media-inner {
+				position: relative;
+				display: block;
+				min-height: 20px;
+			    max-width: 900px;
+			}
+		}
+
+		.meta-top {
+			flex-flow: column;
+			max-width: 100%;
+
+			.meta-left {
+				&.has-author {
+					grid-template-columns: auto;
+				}
+
+				> div {
+					padding-bottom: 5px;
+
+					&:only-of-type {
+						align-self: flex-start !important;
+					}
+				}
+			}
+
+			.meta-right {
+				padding-top: 10px;
+			}
+
+			.avatar {
+				display: none;
+			}
+
+			.meta-left-top {
+				grid-column: span 2/auto;
+			}
+		}
+
+		p {
+			margin: 10px 0px 20px 0px;
+		}
+	}
+
+	.page-header h1 a {
+		font-size: 100%;
+	}
+	#sub-header {
+		position: relative;
+		z-index: 2;
+
+		header.page-header {
+			flex-direction: column;
+
+			.desc {
+				margin: 0;
+			}
+		}
+
+		.meta-header {
+			background-attachment: scroll !important;
+		}
+
+		.meta-header-inside {
+			position: relative;
+			max-height: none !important;
+
+			.desc {
+			    font-size: 100%;
+			}
+		}
+	}
+
+	.respond-box {
+		margin-top: 0;
+
+		.respond-box-title {
+			padding-left: 0;
+			padding-right: 0;
+		}
+	}
+
+	.loop-wrapper.regular {
+		.post-media {
+			order: -1;
+			flex-basis: 100%;
+			padding-right: 0;
+		}
+
+		.list-item {
+			width: 100%;
+
+			h3 {
+				margin-bottom: 15px;
+			}
+		}
+
+		.post-article {
+			.post-media {
+				float: none;
+				max-width: 100%;
+				width: 100%;
+				margin-bottom: 10px;
+
+				img {
+					max-width: 100%;
+				}
+			}
+
+			.post-content-outer {
+				padding: 20px;
+
+				&.single-post {
+					padding-left: 0;
+				}
+
+				.post-meta div {
+					border: none;
+
+					&.blog-buttons a:after {
+						display: none;
+					}
+				}
+			}
+		}
+	}
+
+	.sep-text:not(.keep-always) {
+		.content {
+			display: block;
+			white-space: normal;
+		}
+	}
+
+	blockquote {
+		margin: 0px;
+	}
+
+	.vamtam-hide-lowres {
+		display: none;
+	}
+
+
+	.wp-caption.alignleft {
+		margin-left: 0px;
+	}
+
+	.page-wrapper > aside {
+		max-width: 100%;
+		width: auto;
+	}
+
+	.wpforms-container.vamtam-one-row {
+		.wpforms-form,
+		.wpforms-field-container {
+			flex-direction: column;
+		}
+	}
+
+	// WC Products
+	&:not(.vamtam-limited-layout) ul.products li.product {
+		.vamtam-product-content {
+			padding-left: 30px;
+			padding-right: 30px;
+		}
+	}
+
+	// Standard cart
+	.vamtam-cart-main {
+
+		.vamtam-cart__header {
+			margin-bottom: 10px;
+		}
+
+		> .vamtam-cart__header,
+		> .woocommerce-cart-form__contents .cart_item {
+			padding-right: 20px;
+			padding-left: 20px;
+		}
+
+		.cart_item {
+			grid-template-rows: auto;
+		}
+
+		.product-thumbnail {
+			grid-row: 1/3;
+			> a, > a > img {
+				display: block;
+			}
+		}
+
+		.product-remove {
+			align-self: flex-end;
+		}
+
+		.product-price {
+			&:before {
+				display: none;
+			}
+		}
+	}
+
+	//Checkout
+	&.woocommerce-checkout {
+		.woocommerce .col2-set .col-2 {
+			padding-left: 30px;
+			padding-right: 30px;
+		}
+
+		.woocommerce-notices-wrapper {
+			padding-top: 0;
+			margin-top: 0;
+		}
+
+		form.woocommerce-checkout {
+			.woocommerce-billing-fields > h3 {
+				margin-top: 0;
+			}
+		}
+	}
+
+	&.woocommerce-cart,
+	&.woocommerce-checkout {
+		.meta-header-inside {
+			height: auto !important;
+			padding: 0 !important;
+
+			> .page-header > h3 {
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				margin: 30px 0;
+			}
+		}
+	}
+
+	.elementor-field-group:not(.elementor-field-type-upload) .elementor-field:not(.elementor-select-wrapper) {
+		margin: 0px;
+	}
+
+	.vamtam-prevent-scroll-jumps {
+		display: none;
+	}
+}
+
+body.admin-bar.dialog-prevent-scroll {
+	max-height: calc( 100vh - 46px );
+}
+
+// ---------------- Custom Widget Styles -------------- //
+
+// Added here so when moved to individual widget styles there won't be any specificity alteration to be made.
+
+// Icon-Box tablet.
+.elementor-widget-icon-box {
+	// Fix for icon box widget.
+	&.vamtam-el-widget-icon-box-flex {
+		&.elementor-position-left,
+		&.elementor-position-right {
+			.elementor-icon-box-icon {
+				margin-bottom: 0;
+			}
+		}
+	}
+}
+
+// Tabs widget tablet.
+.elementor-widget-tabs {
+	// Title numbering mask.
+	&.vamtam-has-numbering-bg {
+		.elementor-tabs .elementor-tab-mobile-title {
+			display: none;
+		}
+	}
+}
+
+// Products archive tablet.
+.elementor-widget-wc-archive-products {
+	&.elementor-element.elementor-widget {
+		.products.vamtam-wc {
+			grid-template-columns: 1fr 1fr;
+		}
+	}
+}
+
+// Products.
+.elementor-widget-woocommerce-products {
+	// Table layout.
+	.table-layout {
+		display: flex;
+		flex-direction: column;
+
+		.product {
+			padding: 10px;
+			display: grid;
+			grid-template-columns: repeat(4, 1fr);
+			grid-template-rows: repeat(2, 1fr);
+			justify-items: center;
+			align-items: center;
+
+			td {
+				text-align: center;
+				&:first-child {
+					grid-area: 1 / 1 / 2 / 3;
+				}
+				&:nth-child(2) {
+					grid-area: 1 / 3 / 2 / 5;
+				}
+				&:nth-child(3) {
+					grid-area: 2 / 1 / 3 / 3;
+				}
+				&:last-child {
+					grid-area: 2 / 3 / 3 / 5;
+				}
+			}
+		}
+	}
+}
+
+// Product Add To Cart.
+.elementor-widget-woocommerce-product-add-to-cart {
+	&.elementor-add-to-cart-tablet--align-justify {
+		.added_to_cart {
+			flex-basis: 100%;
+		}
+	}
+}
+
+// Product Images.
+.elementor-widget-woocommerce-product-images {
+	// Disable Zoom.
+	img.zoomImg {
+		display: none !important;
+	}
+	// Disable Lightbox.
+	.woocommerce-product-gallery__image {
+		&, a, img {
+			pointer-events: none !important;
+		}
+	}
+}
+
+// Nav menu - Tablet.
+.elementor-widget-nav-menu {
+	&.vamtam-has-mobile-disable-scroll {
+		nav.elementor-nav-menu--dropdown {
+			overflow-y: auto;
+		}
+	}
+
+	&.vamtam-has-mobile-menu-max-height {
+		nav.elementor-nav-menu--dropdown > ul {
+			max-height: calc(var(--vamtam-mobile-menu-max-height, 80vh) - var(--wp-admin--admin-bar--height, 0px));
+		}
+	}
+}

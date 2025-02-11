@@ -1,0 +1,334 @@
+/* Clearfix */
+
+.clearfix() {
+	&:before,
+	&:after {
+		content: " "; /* 1 */
+		display: block; /* 2 */
+	}
+
+	&:after {
+		clear: both;
+	}
+}
+
+/* Absolute Fill Container */
+
+.vamtam-absolute-fill() {
+	content: "";
+	position: absolute;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+}
+
+/* Fonts */
+
+/* !! Attention !!
+	When you use this rule, remember to add the relevant equivalent styles
+	to layout-below-max.less (tablet) and layout-small.less (phone).
+*/
+.vamtam-font( @prefix: primary-font- ) {
+	@font-family: e( "var( --e-global-typography-vamtam_@{prefix}font-family )" );
+	@font-weight: e( "var( --e-global-typography-vamtam_@{prefix}font-weight, normal )" );
+	@font-style: e( "var( --e-global-typography-vamtam_@{prefix}font-style, normal )" );
+	@font-size: e( "var( --e-global-typography-vamtam_@{prefix}font-size )" );
+	@line-height: e( "var( --e-global-typography-vamtam_@{prefix}line-height )" );
+
+	font: e( %( '%s %s %s/%s %s', @font-weight, @font-style, @font-size, @line-height, @font-family ) );
+	letter-spacing: e( "var( --e-global-typography-vamtam_@{prefix}letter-spacing, normal )" );
+	text-transform: e( "var( --e-global-typography-vamtam_@{prefix}transform, none )" );
+	text-decoration: e( "var( --e-global-typography-vamtam_@{prefix}decoration, none )" );
+}
+
+// Base font rules to extend.
+// !! Use :extend() when you want to apply a certain font, NOT a mixin !!
+.vamtam-font-primary-font {.vamtam-font(primary-font-);}
+
+.vamtam-font-h1 {.vamtam-font(h1-);}
+
+.vamtam-font-h2 {.vamtam-font(h2-);}
+
+.vamtam-font-h3 {.vamtam-font(h3-);}
+
+.vamtam-font-h4 {.vamtam-font(h4-);}
+
+.vamtam-font-h5 {.vamtam-font(h5-);}
+
+.vamtam-font-h6 {.vamtam-font(h6-);}
+
+.vamtam-checkbox() {
+	/* Base for label styling */
+	[type="checkbox"] {
+		position: absolute;
+		left: -9999px;
+	}
+	[type="checkbox"] + span,
+	[type="checkbox"] + label {
+		position: relative;
+		padding-left: 2.5em;
+		cursor: pointer;
+		display: flex;
+		align-items: center;
+	}
+
+	/* checkbox aspect */
+	[type="checkbox"] + span:before,
+	[type="checkbox"] + label:before {
+		content: '';
+		position: absolute;
+		left: 0;
+		width: 24px;
+		height: 24px;
+		background: #e4e6eb;
+		box-shadow: inset 0 1px 3px rgba(0,0,0,.1);
+	}
+	/* checked mark aspect */
+	[type="checkbox"] + span:after,
+	[type="checkbox"] + label:after {
+		content: '\2713';
+		position: absolute;
+		left: .2em;
+		font-size: 1.3em;
+		line-height: 0.8;
+		color: #09ad7e;
+		transition: all .2s;
+	}
+	/* checked mark aspect changes */
+	[type="checkbox"]:not(:checked) + span:after,
+	[type="checkbox"]:not(:checked) + label:after {
+		opacity: 0;
+		transform: scale(0);
+	}
+	[type="checkbox"]:checked + span:after,
+	[type="checkbox"]:checked + label:after {
+		opacity: 1;
+		transform: scale(1);
+	}
+	/* disabled checkbox */
+	[type="checkbox"]:disabled + span:before,
+	[type="checkbox"]:disabled + label:before {
+		box-shadow: none;
+		border-color: #bbb;
+		background-color: #ddd;
+	}
+	[type="checkbox"]:disabled:checked + span:after,
+	[type="checkbox"]:disabled:checked + label:after {
+		color: #999;
+	}
+	[type="checkbox"]:disabled + span,
+	[type="checkbox"]:disabled + label {
+		color: #aaa;
+	}
+}
+
+.vamtam-line-clamp-2() {
+	display: -webkit-box;
+	-webkit-line-clamp: 2;
+	/* autoprefixer: off */
+    -webkit-box-orient: vertical;
+    /* autoprefixer: on */
+    overflow: hidden;
+}
+
+// The base styles that standard and menu carts inherit from.
+.vamtam-base-cart-styles() {
+	background-color: var(--vamtam-accent-color-8);
+
+	.vamtam-close {
+		display: inline-block;
+		width: 1em;
+		height: 1em;
+		transition: all .3s ease;
+		stroke-width: 0;
+		stroke: currentColor;
+		fill: currentColor;
+		vertical-align: middle;
+
+		* {
+			pointer-events: none;
+		}
+	}
+
+	.woocommerce-cart-form__contents {
+		height: auto;
+		max-height: unset;
+		overflow: visible;
+		overflow-x: hidden;
+		grid-row: 1;
+	}
+
+	.product-thumbnail {
+		max-width: 120px;
+		max-height: fit-content;
+		grid-row: 1/2;
+	}
+
+	.product-remove {
+		grid-column: 3/4;
+		justify-self: flex-end;
+		border: 0;
+		width: auto;
+		height: auto;
+
+		// Override some def Elementor styles.
+		> a:not(.elementor_remove_from_cart_button) {
+			display: inline;
+			z-index: initial;
+			overflow: hidden;
+			opacity: 1;
+			position: relative;
+			transition: all .3s ease;
+		}
+
+		&::before,
+		&::after {
+			display: none;
+		}
+	}
+
+	.product-price {
+		grid-column: 3/4;
+		align-self: flex-start;
+		padding-left: 0;
+
+		.quantity {
+			display: flex;
+			min-height: 30px;
+			align-items: center;
+
+			.vamtam-quantity {
+				position: relative;
+				margin-right: 15px;
+				svg {
+					fill: currentColor;
+					stroke: currentColor;
+					stroke-width: 0;
+					width: 1em;
+					height: 1em;
+					position: absolute;
+					top: calc(50% - .5em);
+					left: 55%;
+					right: 0;
+					bottom: 0;
+					font-weight: 500;
+					font-size: 16px;
+					pointer-events: none;
+				}
+
+				select {
+					&:hover, &:focus {
+						&:not(:disabled) {
+							border-color: var( --vamtam-accent-color-1 );
+						}
+					}
+
+					&:focus {
+						outline: 0;
+						box-shadow: none;
+					}
+
+					appearance: none;
+					padding: 0 1rem 0 1rem !important;
+					height: 2rem;
+					min-width: 4rem;
+					max-width: 100%;
+					border: 1px solid var( --vamtam-default-line-color );
+					transition: border .3s cubic-bezier(0.39,0.575,0.565,1);
+					text-overflow: ellipsis;
+
+					color: inherit;
+					line-height: inherit;
+					font-size: inherit;
+					font-family: inherit;
+					font: inherit;
+					// Overrides
+					background: none !important;
+					margin: 0 !important;
+					padding-bottom: 0 !important;
+					// No border form menu cart/standard below-max (max standard overrides this)
+					border: 0;
+				}
+			}
+
+			.woocommerce-Price-amount {
+				margin-left: auto;
+			}
+		}
+
+		&:before {
+			content: '';
+			display: block;
+			width: 130%;
+			border-bottom: 1px solid var(--vamtam-accent-color-7);
+			margin-bottom: 10px;
+			position: relative;
+			left: -15%;
+		}
+	}
+
+	.product-name {
+		grid-column: 2 / 3;
+		padding: 5px 35px 0 35px;
+		> a {
+			.vamtam-line-clamp-2();
+		}
+	}
+
+	.cart_item {
+		display: grid;
+		grid-template-rows: auto auto;
+		grid-template-columns: max-content 60% minmax(20%, auto);
+		padding-top: 30px;
+		padding-bottom: 30px;
+		background-color: var(--vamtam-accent-color-5);
+		border-width: 0;
+
+		&:not(:last-of-type) {
+			margin-bottom: 10px;
+		}
+
+		&:not(:first-of-type) {
+			margin-top: 10px;
+		}
+	}
+}
+
+// Bijoux-only.
+.bijoux-vamtam-prefix() {
+	@prefix-width: 20px;
+	@prefix-active-width: 30px;
+	@prefix-height: 1px;
+	.vamtam-prefix {
+		display: inline-block;
+		padding: 0 14px;
+		order: 0;
+		&:before {
+			content: "";
+			display: block;
+			height: @prefix-height;
+			width: @prefix-width;
+			transition: background-color .4s ease, width .4s ease;
+			background-color: var(--vamtam-accent-color-3);
+			border-radius: .75px;
+			position: absolute;
+			top: calc(50% - .5px);
+			transform: translateX(-100%);
+		}
+	}
+	&:hover {
+		.vamtam-prefix:before {
+			background-color: var(--vamtam-accent-color-1);
+			width: @prefix-active-width;
+		}
+	}
+}
+// Bijoux-only.
+.bijoux-btn-line-prefix() {
+	position: relative;
+	display: flex;
+    justify-content: center;
+	align-items: center;
+	.bijoux-vamtam-prefix();
+}

@@ -1,0 +1,97 @@
+.meta-header {
+	position: relative;
+
+	.meta-header-inside {
+		padding: 40px 0px 40px 0px;
+		display: flex;
+		justify-content: center;
+		flex-flow: column;
+
+		.vamtam-meta-tax {
+			order: -1;
+			&:extend( .vamtam-font-h5 );
+
+			&, a {
+				margin-bottom: 20px;
+			}
+		}
+	}
+}
+
+#sub-header {
+	border-top: 1px solid var( --vamtam-default-line-color );
+
+	&.has-background {
+		border-top: none;
+
+		.meta-header-inside {
+			display: flex;
+			align-items: flex-start;
+			justify-content: center;
+		}
+
+		.page-header .page-header-line {
+			border-color: var( --vamtam-accent-color-5 );
+			opacity: .2;
+		}
+	}
+
+}
+
+.page-header {
+	display: flex;
+	align-items: flex-start;
+	flex-direction: column;
+	position: relative;
+	width: 100%;
+
+	.page-header-line {
+		display: block;
+		width: auto;
+		height: 0;
+	    margin-top: 15px;
+		width: 100px;
+		border-bottom: 1px solid var( --vamtam-default-line-color );
+	}
+
+	h1 {
+		margin: 0px;
+		overflow-wrap: break-word;
+		max-width: 100%;
+
+		a {
+			color: var( --vamtam-h1-color );
+		}
+	}
+
+	.desc {
+		font-family: var( --vamtam-primary-font-font-family );;
+		font-size: var( --vamtam-h5-font-size );
+		line-height: 1.1em;
+		font-style: normal;
+		padding-top: 20px;
+		padding-bottom: 20px;
+	}
+}
+
+.single-format-aside .meta-header-inside {
+	min-height: auto;
+	padding: 0px;
+}
+
+body {
+	&.woocommerce,
+	&.single-jetpack-portfolio,
+	&:not(.vamtam-is-elementor),
+	&.archive {
+		article > .page-content {
+			padding-top: 40px;
+		}
+	}
+	&.single-post {
+		article > .page-content {
+			padding-top: 30px;
+		}
+	}
+}
+

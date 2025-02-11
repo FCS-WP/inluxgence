@@ -1,0 +1,174 @@
+@import '../mixins.less';
+
+.widget {
+	margin: 0 auto 30px;
+	padding: 0;
+
+	.widgettitle {
+		position: relative;
+		overflow: hidden;
+		margin: 0px;
+		padding: 0px 0px 10px 0px;
+
+		&, a {
+			word-wrap: break-word;
+		}
+
+		a {
+			color: inherit;
+		}
+
+		> .icon {
+			margin-right: 10px;
+			vertical-align: baseline;
+		}
+	}
+
+	&:last-child {
+		margin-bottom: 0;
+		padding-bottom: 0;
+		border-bottom: 0;
+		background: transparent;
+	}
+	&.widget_recent_entries {
+		a {
+			&:extend(.vamtam-font-h5);
+			display: inline;
+		}
+		.post-date {
+			&:extend(.vamtam-font-h6);
+			display: block;
+			padding-top: 5px;
+		}
+	}
+
+	&.widget_recent_comments {
+		li {
+			padding: 15px 0;
+
+			> a {
+				display: block !important;
+			}
+		}
+	}
+
+	ul,
+	ol {
+		margin: 0;
+		padding: 0;
+		list-style: none;
+	}
+
+	li {
+		position: relative;
+		overflow: hidden;
+		margin: 0;
+		padding: .6em 0;
+		transition: all .2s ease;
+
+		text-overflow: ellipsis;
+		word-wrap: break-word;
+		&:extend(.vamtam-font-primary-font);
+
+		&:not(:last-child) {
+			border-bottom: dotted 1px var( --vamtam-default-line-color );
+		}
+
+		.count {
+			color: var( --vamtam-accent-color-3 );
+			font-size: calc( var( --vamtam-primary-font-font-size ) - 2px );
+		}
+
+		a {
+			font-size: 18px !important;
+			font-weight: 500 !important;
+		}
+	}
+
+	select {
+		max-width: 100%;
+	}
+
+	.lang_sel_click li {
+		overflow: visible;
+	}
+}
+
+/* Widgets in sidebars ------------------------------------------------------ */
+.widget-box {
+
+	&:after {
+		position: relative;
+		top: 10px;
+		display: block;
+		clear : both;
+		margin: 0 -10px;
+		height : 1px;
+		content: "";
+	}
+}
+
+.vamtam-body-sidebar {
+	.widget {
+		margin: 0 0px 40px 0px;
+		padding: 0;
+
+
+		.widgettitle {
+			background: transparent;
+			border-bottom: solid 1px var( --vamtam-default-line-color );
+			padding-bottom: 10px;
+			margin-bottom: 20px;
+
+			> .icon {
+				margin-top: -3px;
+
+				&.shortcode {
+					color: var( --vamtam-accent-color-7 );
+				}
+			}
+
+			+ ul,
+			+ ol,
+			+ div,
+			+ form {
+				border: none;
+			}
+		}
+
+		ul.children {
+			border-top: dotted 1px var( --vamtam-default-line-color );
+		    margin-top: 10px;
+	        margin-bottom: -10px;
+	        margin-left: 10px;
+
+		    li {
+			    &:last-child {
+				    border-bottom: none;
+			    }
+		    }
+		}
+		> ul,
+		> ol,
+		> div,
+		> h4+form {
+			.widget-box;
+		}
+		.tagcloud {
+			margin-top: 10px;
+		}
+	}
+}
+
+/* Widgets in footer -------------------------------------------------------- */
+#main-footer .widget {
+	.widgettitle {
+		white-space: normal;
+	}
+}
+
+#page.disable-hover,
+.main-container.disable-hover {
+	pointer-events: none;
+}
+

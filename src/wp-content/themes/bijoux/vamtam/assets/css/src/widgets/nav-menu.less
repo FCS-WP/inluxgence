@@ -1,0 +1,48 @@
+.widget_nav_menu {
+	> div {
+		padding: 0 !important;
+
+		&:after {
+			top : 0 !important;
+			margin: 0 !important;
+		}
+	}
+
+	&.widget {
+		.menu-pagepost-options-container {
+			border-right: none !important;
+			border-bottom: none !important;
+			border-left: none !important;
+		}
+	}
+
+	.menu {
+		li {
+			margin: 0;
+			padding: 0;
+
+			&.current_page_item {
+				> a {
+					color: var( --vamtam-body-link-hover );
+					font-weight: normal;
+				}
+			}
+
+			a {
+				box-sizing: border-box;
+				display: block;
+				padding: 10px 10px 10px 0px;
+				min-width: 100%;
+
+				&:not(:last-child) {
+					border-bottom: 1px dotted var( --vamtam-default-line-color );
+				}
+			}
+
+			.sub-menu {
+				padding-left: 10px;
+			}
+		}
+	}
+}
+

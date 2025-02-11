@@ -1,0 +1,331 @@
+body:not(.vamtam-is-elementor) {
+	#comments-list,
+	#trackbacks-list {
+		&:not(.vamtam-comments-small) {
+			border-bottom: solid 1px var(--vamtam-default-line-color);
+		}
+	}
+}
+
+body:not(.vamtam-limited-layout) #main.layout-full .comments-wrapper {
+	max-width: 760px;
+	margin-left: auto;
+	margin-right: auto;
+}
+.respond-box {
+	position: relative;
+}
+
+.comment-reply-title {
+	&:extend( .vamtam-font-h5 );
+	color: var( --vamtam-h5-color );
+	display: block;
+	margin: 30px 0;
+	height: auto;
+	text-transform: uppercase;
+	text-align: start;
+	line-height: 16px;
+}
+
+body.logged-in .respond-box-title {
+	padding-bottom: 5px;
+}
+.comments-wrapper {
+	clear: both;
+	margin-bottom: 60px;
+
+	body:not(.vamtam-is-elementor) & {
+		border-top: solid 1px var(--vamtam-default-line-color);
+	}
+
+	.sep-text {
+		z-index: 2;
+		margin-top: 0px;
+		margin-bottom: 0px;
+		padding: 20px 0;
+		position: relative;
+
+		.content {
+			padding: 0px;
+			&, a {
+				text-transform: uppercase;
+				&:extend( .vamtam-font-h5 );
+				color: var( --vamtam-h5-color );
+			}
+		}
+	}
+
+	label {
+		display: inline-block;
+		padding-bottom: 5px;
+	}
+	.logged-in-as {
+		margin: 0 0 20px 0 !important;
+		a {
+			border: var( --vamtam-no-border-link );
+		}
+	}
+}
+
+.comments,
+.woocommerce #reviews #comments {
+	@comment-avatar: 70px;
+	position: relative;
+
+	#respond {
+		padding: 10px 0px;
+	}
+
+
+	.comment {
+		position: relative;
+		padding: 30px 0 0 0;
+		border: solid 1px var(--vamtam-default-line-color);
+		border-width: 1px 0 0 1px;
+
+		&.depth-1 {
+			border-left: 0;
+		}
+
+		// nested
+		.comment {
+			padding: 20px 0 0 20px;
+			box-sizing: border-box;
+			margin-left: 35px;
+		}
+
+		.single-comment-wrapper {
+			display: flex;
+		}
+
+		.comment-content {
+			flex: 1;
+			max-width: 100%;
+			padding-bottom: 30px;
+
+			p {
+				margin-bottom: 16px;
+			}
+		}
+	}
+
+	.avatar {
+		max-width: @comment-avatar !important;
+		max-height: @comment-avatar;
+	}
+
+	.comment-author {
+		display: inline-block;
+		vertical-align: top;
+		width: auto;
+		padding-bottom: 20px;
+
+		img {
+			margin-right: 20px;
+			background: var( --vamtam-accent-color-7 );
+			border-radius: 100em;
+			display: block;
+		}
+	}
+
+	.bypostauthor {
+		position: relative;
+		z-index: 1;
+	}
+	.comment-author-link {
+		.vamtam-font( h5- );
+
+		a {
+			color: var( --vamtam-body-link-regular );
+		}
+	}
+	.comment-time {
+		border-left: solid 1px var( --vamtam-accent-color-4 );
+		padding-left: 10px;
+		padding-top: 2px;
+	}
+
+	.comment-content {
+		&:hover {
+			h6.comment-reply-link {
+				opacity: 1;
+			}
+		}
+	}
+
+	.comment-meta {
+		padding-bottom: 16px;
+		display: flex;
+		flex-flow: row wrap;
+		justify-content: space-between;
+		align-items: center;
+
+		> .comment-meta-inner {
+			display: flex;
+			align-items: center;
+			flex-wrap: wrap;
+
+			> div,
+			> a {
+				margin-right: 10px;
+				margin-bottom: 0;
+
+				&:last-child {
+					margin-right: 0;
+				}
+			}
+		}
+	}
+
+	h6.comment-reply-link {
+		display: inline-block;
+		transition: opacity .3s ease;
+
+		a {
+			font-size: 10px;
+			padding: 5px 10px;
+		}
+	}
+
+	#reply-title {
+		margin-bottom: 0px !important;
+	}
+
+	#cancel-comment-reply-link {
+		&:extend( .vamtam-font-primary-font );
+		color: var( --vamtam-body-link-regular );
+		position: relative;
+		margin-left: 5px;
+		text-transform: capitalize;
+	}
+
+	.comment-notes {
+		margin-bottom: 14px;
+		font-size: 10px;
+		opacity: 0.6;
+	}
+
+	.comment-note {
+		position: absolute;
+		top: -10px;
+		font-size: 12px;
+		transition: all .35s;
+		opacity: 0;
+		color: #4F9304;
+	}
+}
+
+#commentform {
+	clear: both;
+	position: relative;
+
+	&:after {
+		display: block;
+		clear: both;
+		content: "";
+	}
+
+	.input {
+		background: var( --vamtam-accent-color-5 );
+	}
+
+	.form-input {
+		float: left;
+		width: 100%;
+		background: none;
+	}
+
+	.comment-form-email:hover .comment-note {
+		opacity: 1;
+		top: -20px;
+	}
+
+	.comment-form-comment textarea {
+		height: 130px;
+	}
+
+	.form-input input,
+	.comment-form-comment textarea {
+		width: 100%;
+		margin-top: 0;
+		margin-bottom: 0 !important;
+	}
+
+	.form-submit {
+		bottom: 0;
+		height: auto;
+		float: none;
+		clear: both;
+	}
+
+	#submit {
+		position: relative;
+
+		&:before {
+			position: absolute;
+			top: 50%;
+			left: 0;
+			content: icon( vamtam-theme-pencil);
+			font-family: 'vamtam-theme';
+		}
+	}
+
+	input[type="checkbox"] {
+		vertical-align: middle;
+		margin-right: 5px;
+		padding: 10px;
+		float: left;
+	}
+
+	.comment-form-cookies-consent {
+		display: flex;
+	}
+
+	label[for="wp-comment-cookies-consent"] {
+		display: inline;
+		padding-bottom: 0;
+	}
+
+	p {
+		margin-bottom: 1em;
+	}
+
+	.comment-form-cookies-consent {
+		display: flex;
+		align-items: center;
+		> input {
+			margin-right: 10px;
+		}
+		> label {
+			padding-bottom: 0;
+		}
+	}
+
+	// Bijoux only.
+	button#submit {
+		.bijoux-btn-line-prefix();
+		display: inline-flex;
+		&::before {
+			content: none !important;
+		}
+		background: var(--vamtam-accent-color-4);
+		&:hover {
+			background: var(--vamtam-accent-color-5);
+			color: var(--vamtam-accent-color-3);
+		}
+	}
+}
+
+.comment-author {
+	line-height: 1em !important;
+
+	span {
+		float: left;
+		margin-top: 3px;
+	}
+}
+
+h6.comment-reply-link,
+.comment-edit-link {
+	font-size: 12px !important;
+}

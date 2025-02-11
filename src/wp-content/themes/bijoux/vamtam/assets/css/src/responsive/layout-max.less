@@ -1,0 +1,225 @@
+.page-wrapper {
+	> .left-right {
+		max-width: calc( 100% - var( --vamtam-left-sidebar-width, 30% ) - var( --vamtam-right-sidebar-width, 30% ) );
+	}
+
+	> .left-only {
+		max-width: calc( 100% - var( --vamtam-left-sidebar-width, 30% ) );
+	}
+
+	> .right-only {
+		max-width: calc( 100% - var( --vamtam-right-sidebar-width, 30% ) );
+	}
+}
+
+header.main-header {
+	.header-contents,
+	.header-content-wrapper {
+		box-sizing: border-box;
+	}
+}
+
+#sub-header {
+	position: relative;
+}
+
+body.layout-full .alignwide {
+	max-width: 90% !important;
+}
+
+.loop-wrapper {
+	&.regular {
+		.home.blog.layout-full .page-content > &,
+		.archive.layout-full .page-content > &,
+		.search-results.layout-full .page-content > & {
+			:not(.vamtam-limited-layout)& {
+				max-width: 70%;
+			}
+		}
+	}
+}
+
+body:not(.fl-builder-active) [data-progressive-animation="expand-scroll"] {
+	overflow: hidden;
+
+	.fl-col-group {
+		display: flex;
+	}
+
+	.fl-row-content {
+		max-width: none;
+	}
+}
+
+// Standard cart
+.woocommerce .vamtam-cart-main {
+	background-color: transparent;
+
+	.product-thumbnail {
+		> a, > a > img {
+			display: block;
+		}
+	}
+
+	.woocommerce-cart-form__contents {
+		overflow-x: visible;
+	}
+
+	.cart_item {
+		grid-template-rows: auto;
+
+		&:not(:last-of-type) {
+			border-bottom: 1px solid var(--vamtam-accent-color-7);
+		}
+	}
+
+	.product-remove {
+		align-self: flex-end;
+	}
+
+	.product-remove,
+	.product-price {
+		grid-row: 1/2;
+	}
+
+	.product-price {
+		&:before {
+			display: none;
+		}
+		.quantity .vamtam-quantity {
+			select {
+				border: 1px solid var( --vamtam-default-line-color );
+			}
+		}
+	}
+}
+
+.vamtam-sticky-header {
+	z-index: 100;
+	transition: transform .2s ease !important;
+	will-change: transform;
+	left: 0;
+	right: 0;
+
+	&.vamtam-sticky-header--transparent-header {
+		transition: transform        .15s linear,
+					background-color .35s ease !important;
+		will-change: transform, background-color;
+	}
+
+	&[class*="vamtam-sticky-header--fixed"] {
+		position: fixed !important;
+	}
+
+	&.vamtam-sticky-header--fixed-shown {
+
+		&.vamtam-sticky-header--transparent-header {
+			background-color: var(--vamtam-sticky-header-bg-color) !important;
+		}
+
+		transform: translateY(0);
+	}
+
+	&.vamtam-sticky-header--fixed-hidden {
+		transform: translateY(-100%);
+	}
+}
+
+body.admin-bar.dialog-prevent-scroll {
+	max-height: calc( 100vh - 32px );
+}
+
+// ---------------- Custom Widget Styles -------------- //
+
+// Added here so when moved to individual widget styles there won't be any specificity alteration to be made.
+
+// Nav menu desktop.
+.elementor-widget-nav-menu {
+	// Nav menu, top-level, no submenu indicator
+	nav ul.elementor-nav-menu > li.menu-item > a .sub-arrow {
+		display: none;
+	}
+}
+
+// Tabs widget desktop.
+.elementor-widget-tabs {
+	// Title numbering mask.
+	&.vamtam-has-numbering-bg {
+		.elementor-tabs .elementor-tab-mobile-title {
+			display: none;
+		}
+	}
+}
+
+// Menu cart.
+// WP Admin Bar - Menu Cart fix.
+body.admin-bar .elementor-widget-woocommerce-menu-cart {
+	.elementor-menu-cart__container {
+		height: calc(100vh - 32px);
+	}
+}
+
+// Bijoux-only.
+body:not(.wp-admin):not(.elementor-editor-active) {
+	&.has-mouse-dot {
+		&, * {
+			cursor: none !important;
+		}
+
+		#wpadminbar {
+			&, * {
+				cursor: initial !important;
+			}
+			a {
+				&, * {
+					cursor: pointer !important;
+				}
+			}
+		}
+
+		#mouseDot {
+			pointer-events: none;
+			position: fixed;
+			background-color: var(--vamtam-accent-color-1);
+			border-radius: 50%;
+			z-index: 10000;
+			width: 12px;
+			height: 12px;
+			top: -6px;
+			left: -6px;
+			will-change: transform;
+		}
+	}
+
+	&.has-mouse-circle {
+		#mouseCircle {
+			z-index: 10000;
+			pointer-events: none;
+			position: fixed;
+			border: solid 1px var(--vamtam-accent-color-1);
+			border-radius: 50%;
+			width: 70px;
+			height: 70px;
+			top: -35px;
+			left: -35px;
+			opacity: 0;
+			transition: top .2s linear, left .2s linear, width .2s linear, height .2s linear, opacity 1.2s cubic-bezier(.47,0,.745,.715);
+			will-change: transform,opacity;
+			&.moving{
+				opacity: 1;
+			}
+			&.small {
+				width: 50px;
+				height: 50px;
+				top: -25px;
+				left: -25px;
+			}
+		}
+	}
+}
+
+body:not(.single):not(.woocommerce) .page-header {
+	min-height: 395px;
+	justify-content: center;
+	align-items: center;
+}

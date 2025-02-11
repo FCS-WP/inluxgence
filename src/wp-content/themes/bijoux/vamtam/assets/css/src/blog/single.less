@@ -1,0 +1,144 @@
+body.single-post {
+	&.layout-full {
+		.single-post-wrapper {
+			--vamtam-site-max-width: 1000px;
+		}
+
+		#main .comments-wrapper {
+			max-width: none;
+		}
+	}
+
+	.single-post-meta-wrapper + div {
+		margin-top: 30px;
+		margin-bottom: 30px;
+	}
+
+	&:not(.layout-full) {
+		.single-post-meta-wrapper {
+			padding-top: 30px;
+		}
+
+		#main {
+			border-top: 1px solid var( --vamtam-default-line-color );
+		}
+
+		#sub-header {
+			border-top: 0;
+		}
+
+		.vamtam-body-sidebar {
+			margin-top: 70px;
+		}
+	}
+
+	.single-post-wrapper .post-content-outer {
+		.meta-top {
+			display: flex;
+			justify-content: center;
+			flex-wrap: wrap;
+			padding: 0 0 30px 0;
+			transition: all .3s ease;
+			border-bottom: 1px solid var( --vamtam-default-line-color );
+			margin: auto;
+
+			.post-media .media-inner img {
+				width: 100%;
+			}
+
+			.meta-left {
+				display: grid;
+				flex: 1 1 auto;
+				grid-gap: 0 10px;
+
+				&.has-author {
+					grid-template-columns: 50px auto;
+				}
+
+				> div {
+					display: flex;
+					flex-flow: row wrap;
+					align-items: center;
+
+					&:only-of-type {
+						align-self: center;
+						grid-row: span 2/auto;
+					}
+				}
+
+				.meta-left-top {
+					align-self: end;
+					&:extend( .vamtam-font-primary-font );
+				}
+			}
+
+			.avatar {
+				grid-row: span 2/auto;
+				border-radius: 100%;
+			}
+
+			.meta-right {
+				flex: 1 1 auto;
+				display: flex;
+				flex-flow: column;
+			}
+
+			.meta-right {
+				align-items: flex-end;
+			}
+
+			.comment-count {
+				.icon {
+					position: relative;
+					top: 1px;
+					padding: 0 10px 0 0;
+				}
+			}
+
+			.with-separator {
+				padding-top: 3px;
+				padding-bottom: 2px;
+
+				.vamtam-meta-date {
+					&::before {
+						margin-right: 10px;
+					}
+				}
+
+				> :not(:last-child) {
+					margin-right: 20px;
+				}
+
+			}
+
+			.vamtam-meta-date {
+				font: inherit;
+				letter-spacing: inherit;
+			}
+		}
+
+		.author {
+			a {
+				margin-left: 5px;
+			}
+		}
+
+		.vamtam-meta-tax {
+			padding: 5px 0 0 0;
+			margin-bottom: 20px;
+
+			&:last-child {
+				margin-right: 0px;
+			}
+		}
+
+		.single-post-meta-bottom {
+			margin: 30px auto 50px auto;
+			clear: both;
+
+			strong {
+				margin-right: 10px;
+			}
+		}
+	}
+}
