@@ -1174,7 +1174,7 @@ class VamtamElementorBridge {
 
 		if ( $content_imported ) {
 			// Existing site that has already run the import procedure.
-			self::import_theme_icons();
+			// self::import_theme_icons();
 		}
 	}
 
